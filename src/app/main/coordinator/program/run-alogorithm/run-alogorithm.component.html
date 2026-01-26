@@ -1,0 +1,275 @@
+<app-loader [show]="loader"></app-loader>
+<div id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
+  <div class="d-flex flex-column flex-root">
+    <!--begin::Page-->
+    <div class="page d-flex flex-row flex-column-fluid">
+      <!--begin::Wrapper-->
+      <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+        <!--begin::Toolbar-->
+        <div class="toolbar py-2" id="kt_toolbar">
+          <!--begin::Container-->
+          <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
+            <!--begin::Page title-->
+            <div class="page-title d-flex flex-column me-3">
+              <!--begin::Title-->
+              <h1 class="d-flex text-gray my-1 fs-5">Run Algorithm</h1>
+              <!--end::Title-->
+              <!--begin::Breadcrumb-->
+              <ul class="breadcrumb breadcrumb-dot fw-light text-gray-400 fs-8">
+                <!--begin::Item-->
+                <li class="breadcrumb-item text-gray-600">
+                  <a routerLink="/mentor/MentorDashboard" class="text-gray-600 text-hover-primary">Home</a>
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <li *ngIf="loginDetails?.roleId == '101'" class="breadcrumb-item text-gray-500">
+                  <a href="" routerLink="/cordinator/program" routerLinkActive="active">Program</a>
+                </li>
+                <li *ngIf="loginDetails?.roleId == '102'" class="breadcrumb-item text-gray-500">
+                  <a href="" routerLink="/mentor/mentorProgram" routerLinkActive="active">Program</a>
+                </li>
+                <li *ngIf="loginDetails?.roleId == '103'" class="breadcrumb-item text-gray-500">
+                  <a href="" routerLink="/mentee/MenteeProgram" routerLinkActive="active">Program</a>
+                </li>
+                <li *ngIf="loginDetails?.roleId == '101' " class="breadcrumb-item text-gray-600"><a
+                    routerLink="/cordinator/ProgramDetail/{{id}}" routerLinkActive="active">Program Details</a></li>
+                <li *ngIf="loginDetails?.roleId == '102'" class="breadcrumb-item text-gray-600"><a
+                    routerLink="/mentor/program-details/{{id}}" routerLinkActive="active">Program Details</a></li>
+                <li *ngIf="loginDetails?.roleId == '103' " class="breadcrumb-item text-gray-600"><a
+                    routerLink="/mentee/ProgramDetail/{{id}}" routerLinkActive="active">Program Details</a></li>
+
+                <!--end::Item-->
+                <!--begin::Item-->
+                <li class="breadcrumb-item text-gray-500">Run Algorithm</li>
+                <!--end::Item-->
+              </ul>
+              <!--end::Breadcrumb-->
+            </div>
+            <div class="" *ngIf="loginDetails?.roleId == '101'">
+              <a routerLink="/cordinator/ProgramDetail/{{ id }}" routerLinkActive="active"
+                class="btn btn-gray btn-sm fs-9"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="svg replaced-svg">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Go Back</a>
+            </div>
+            <div class="" *ngIf="loginDetails?.roleId == '102'">
+              <a routerLink="/mentor/program-details/{{ id }}" routerLinkActive="active"
+                class="btn btn-gray btn-sm fs-9"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="svg replaced-svg">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Go Back</a>
+            </div>
+            <div class="" *ngIf="loginDetails?.roleId == '103'">
+              <a routerLink="/mentee/ProgramDetail/{{ id }}" routerLinkActive="active"
+                class="btn btn-gray btn-sm fs-9"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="svg replaced-svg">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Go Back</a>
+            </div>
+            <!--end::Page title-->
+          </div>
+          <!--end::Container-->
+        </div>
+        <!--end::Toolbar-->
+        <!--begin::Container-->
+        <div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
+          <!--begin::Post-->
+          <div class="content flex-row-fluid" id="kt_content">
+            <form id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row"
+              data-kt-redirect="../../demo11/dist/apps/ecommerce/catalog/categories.html">
+              <!--begin::Aside column-->
+              <div class="d-flex flex-column gap-7 gap-lg-10 w-300 w-lg-300px mb-7 me-lg-10">
+                <!--begin::Thumbnail settings-->
+                <div class="card card-flush py-4">
+                  <!--begin::Card header-->
+                  <div class="card-header"></div>
+
+                  <div class="card-body text-center pt-0">
+                    <img src="assets/media/svg/illustrations/easy/1.svg" alt="image" />
+
+                    <div class="text-muted fs-7">
+                      Manage mentor and mentee mapping with ease. Click trash
+                      icon to remove a mapping OR use dropdown and hit save
+                      button to map a unmapped mentee.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+                <!--begin::General options-->
+                <div class="card card-flush py-2">
+                  <!--begin::Card header-->
+                  <div class="card-header">
+                    <div class="card-title">
+                      <h3 class="fw-semibold fs-5">Run Algorithm</h3>
+                    </div>
+                  </div>
+
+                  <div class="card-body pt-0">
+                    <div>
+                      <div
+                        class="menu rounded menu-rounded menu-column menu-lg-row menu-root-here-bg-desktop menu-active-bg menu-state-primary menu-title-gray-800 menu-arrow-gray-400 align-items-stretch flex-grow-1  px-2 py-1 bg-light fw-bold fs-6"
+                        id="#kt_header_menu" data-kt-menu="true">
+                        <!--begin:Menu item-->
+                        <div class="menu-item me-0 me-lg-2" data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
+                          data-kt-menu-placement="bottom-start">
+                          <!--begin:Menu link-->
+                          <a class="menu-link  py-2" [ngClass]="{'active':mentorQuestionnaire}" >
+                            <span class="menu-title " style="cursor: pointer;"
+                              (click)="mentorQuestionnaire=true;menteeQuestionnaire=false;">Mentor</span>
+                            <span class="menu-arrow d-lg-none"></span>
+                          </a>
+                          <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <div class="menu-item me-0 me-lg-2">
+                          <!--begin:Menu link-->
+                          <a class="menu-link py-2" [ngClass]="{'active':menteeQuestionnaire}" >
+                            <span class="menu-title" style="cursor: pointer;"
+                              (click)="menteeQuestionnaire=true;mentorQuestionnaire=false">Mentee</span>
+                            <span class="menu-arrow d-lg-none"></span>
+                          </a>
+                          <!--end:Menu link-->
+                        </div>
+                      </div>
+                      <div id="mentorQstnList" *ngIf="mentorQuestionnaire">
+                        <p-table [value]="questionList" [tableStyle]="{ 'min-width': '50rem' }">
+                          <ng-template pTemplate="header">
+                            <tr>
+                              <th>Mentor Questioner</th>
+                              <th>Priority</th>
+                            </tr>
+                          </ng-template>
+                          <ng-template pTemplate="body" let-question>
+                            <tr>
+                              <td value="question?.Id">
+                                {{ question?.question }}
+                              </td>
+                              <td>
+                                <div class="col-sm-12 col-lg-4">
+                                  <input type="number" [(ngModel)]="question.priority"
+                                    [ngModelOptions]="{ standalone: true }" class="form-control" />
+                                </div>
+                              </td>
+                            </tr>
+
+
+                          </ng-template>
+
+
+                        </p-table>
+                      </div>
+                      <div id="menteeQstnList" *ngIf="menteeQuestionnaire">
+                        <p-table [value]="menteeQuestionList" [tableStyle]="{ 'min-width': '50rem' }">
+                          <ng-template pTemplate="header">
+                            <tr>
+                              <th>Mentee Questioner</th>
+                              <th>Priority</th>
+                            </tr>
+                          </ng-template>
+                          <ng-template pTemplate="body" let-question>
+                            <tr>
+                              <td value="question?.Id">
+                                {{ question?.question }}
+                              </td>
+                              <td>
+                                <div class="col-sm-12 col-lg-4">
+                                  <input type="number" [(ngModel)]="question.priority"
+                                    [ngModelOptions]="{ standalone: true }" class="form-control" />
+                                </div>
+                              </td>
+                            </tr>
+
+
+                          </ng-template>
+
+
+                        </p-table>
+                      </div>
+                    </div>
+
+                    <div class="row mt-4">
+                      <div class="col-sm-3 ">
+                        <button type="button" class="run-algo-btn btn btn-primary btn-sm" (click)="runAlgo()">Run
+                          Algorithm</button>
+                      </div>
+                      <div class="col-sm-9">
+                        <p class="invalidField-message" *ngIf="menteeIndexMappingError">Please enter the priorities of
+                          mentor and mentee Questioner.</p>
+                      </div>
+
+                    </div>
+                  </div>
+                  <!--end::Card header-->
+                </div>
+                <div class="mt-1">
+
+                  <div>
+                    <p-accordion class="w-full" *ngIf="runAlgorithmData?.length>0">
+                      <p-accordionTab *ngFor="let mentor of runAlgorithmData;let i=index;">
+                        <ng-template pTemplate="header">
+                          <div class="flex align-items-center">
+                            <span class="vertical-align-middle">{{mentor?.firstName}} {{mentor?.lastName}}</span>
+                          </div>
+                        </ng-template>
+                        <ng-template pTemplate="content" *ngFor="let mentees of mentor.mentees; let i=index;">
+                          <table class="w-100 p-2">
+                            <thead>
+                              <tr>
+                                <th>Mentee Name</th>
+                                <th>Mentee Email</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>{{mentees?.firstName}} {{mentees?.lastName}}</td>
+                                <td>{{mentees?.email}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </ng-template>
+                      </p-accordionTab>
+
+
+                      <div class="col-sm-12  text-right mt-4">
+                        <button type="button" class="btn btn-sm btn-primary" (click)="SaveAlgoMapping()">Submit</button>
+                      </div>
+
+                    </p-accordion>
+                  </div>
+
+                </div>
+              </div>
+              <!--end::Main column-->
+            </form>
+
+
+          </div>
+          <!--end::Post-->
+
+        </div>
+        <!--end::Container-->
+        <!--begin::Footer-->
+        <div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+          <!--begin::Container-->
+          <app-footer></app-footer>
+          <!--end::Container-->
+        </div>
+        <!--end::Footer-->
+      </div>
+      <!--end::Wrapper-->
+    </div>
+    <!--end::Page-->
+  </div>
+</div>

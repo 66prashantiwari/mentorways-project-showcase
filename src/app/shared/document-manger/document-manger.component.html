@@ -1,0 +1,197 @@
+<p-dialog header="My Files" [(visible)]="displayDocumentHide" [style]="{width: '60vw'}" [modal]="true"
+    [draggable]="false" [resizable]="false" (onHide)="cancel()">
+
+    <div class="modal-body pt-3">
+        <div class="dropzone dropzone-queue mb-3">
+            <div id="menu" style="list-style-type: none;text-align: end;">
+                <svg (click)="openPopup()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-plus" viewBox="0 0 16 16">
+                    <path
+                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg>
+
+                <!-- <button class="btn btn-primary" (click)="openFileInput()">
+                    Upload New
+                </button> -->
+                <!-- <input type="file" #fileInput name="image" (change)="onFileSelected($event)" style="display: none;"> -->
+            </div>
+            <div *ngIf="showFilesData<=0">
+                <h4 style="text-align: center;">
+                    Document Not Found
+                </h4>
+            </div>
+        </div>
+        <div class="image-row">
+            <ul class="list-group">
+                <li class="list-group-item " *ngFor="let name of showFilesData">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="my-drive-box">
+                            <a href="{{imageUrl}}{{name?.documentUrl}}" target="_blank" class=" mb-1 fw-semibold"
+                                style="text-transform: capitalize;">
+                                <img style="width: 17%; margin-right:7px;" src="./assets/media/svg/files/files.png"
+                                    pTooltip="{{name.documentname}}"
+                                    class="fs-6 fw-semibold mb-1 disign-eli">{{name.documentname}}
+                            </a>
+                        </div>
+                        <div class=" d-flex">
+
+                            <p-checkbox *ngIf="shareShow == true" name="name" [value]="name.doc_id"
+                                [(ngModel)]="selectedValues" (onChange)="sharedDoc(name)"></p-checkbox>
+                            <a (click)="deletelist(name)" title="Delete Employee"
+                                class="btn btn-light-danger btn-sm btn-icon ms-1 p-1"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
+                                    viewBox="0 0 16 16" class="bi bi-trash-fill">
+                                    <path
+                                        d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z">
+                                    </path>
+                                </svg></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="dropzone dropzone-queue mb-2" *ngIf="documentIds.length >0">
+            <div id="menu" style="list-style-type: none;text-align: end;">
+                <button *ngIf="shareShow == true" class="btn btn-primary" (click)="sharedDocumentToAny()"
+                    style="margin-right: 10px;">
+                    Share
+                </button>
+            </div>
+        </div>
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]="display" [modal]="true" class="text-center">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="swal2-icon swal2-error swal2-icon-show" style="display: flex;">
+                    <span class="swal2-x-mark">
+                        <span class="swal2-x-mark-line-left"></span>
+                        <span class="swal2-x-mark-line-right"></span>
+                    </span>
+                </div>
+                <div class="swal2-html-container">Are you sure you want to delete this ?
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-light mt-4" (click)="display = false">Cancel</button>
+                    <button style="margin-left: 4px;" type="button" class="btn btn-primary mt-4"
+                        (click)="deleteDocument()">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</p-dialog>
+
+<p-dialog header="Share Drive" [(visible)]="sharedDocument" [style]="{width: '30vw'}" [modal]="true" [draggable]="false"
+    [resizable]="false">
+    <!--begin::Modal - Upload File-->
+    <!--begin::Modal content-->
+    <div class="modal-content">
+        <!--begin::Form-->
+        <form class="form" [formGroup]="roleForm" (ngSubmit)="onSubmit()">
+            <!--begin::Modal body-->
+            <div class="modal-body">
+                <!--begin::Input group-->
+                <div class="form-group">
+                    <!--begin::Dropzone-->
+                    <div class="dropzone dropzone-queue mb-2">
+                        <div class="mb-10 fv-row fv-plugins-icon-container">
+                            <!--begin::Label-->
+                            <label class=" form-label">Select To Send File</label>
+                            <!--end::Label-->
+                            <p-dropdown class="form-control mb-2 border-0 w-100" [options]="accessList"
+                                formControlName="selectedRole" placeholder="Select Role">
+                            </p-dropdown>
+                            <p class="text-danger error_msg"
+                                *ngIf="roleForm.controls['selectedRole'].hasError('required') && isInvalidForm">
+                                Selected Role Is Mandatory.
+                            </p>
+                        </div>
+                        <!--end::Controls-->
+
+                    </div>
+                    <!--end::Dropzone-->
+                    <!--begin::Hint-->
+                    <div class="form-text text-right d-flex justify-content-end">
+                        <button class="btn btn-sm fs-8 btn-primary" type="submit">
+                            <span>Submit </span>
+                        </button>
+                        <!-- <a type="submit" class="btn btn-primary">Submit</a> -->
+                    </div>
+                    <!--end::Hint-->
+                </div>
+                <!--end::Input group-->
+            </div>
+            <!--end::Modal body-->
+        </form>
+        <!--end::Form-->
+    </div>
+
+</p-dialog>
+
+
+<p-dialog header="Upload" [(visible)]="uploadDoc" [style]="{width: '30vw', height: '300px'}" [modal]="true"
+    [draggable]="false" [resizable]="false">
+    <!--begin::Modal - Upload File-->
+    <!--begin::Modal content-->
+    <div class="modal-content pt-5">
+        <!--begin::Form-->
+        <form class="form" [formGroup]="uploadForm" (ngSubmit)="onSubmitDoc()">
+            <!--begin::Modal body-->
+            <div class="modal-body">
+                <!--begin::Input group-->
+                <div class="form-group">
+                    <!--begin::Dropzone-->
+                    <div class="">
+                        <div class="mb-4 text-center">
+                            <!--begin::Label-->
+                            <button class="btn btn-sm btn-upload" type="button" (click)="openFileInput()">
+                                <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                        class="bi bi-plus" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                    </svg></span>
+                                <input type="file" #fileInput name="image" (change)="onFileSelected($event)"
+                                    style="display: none;">
+                            </button>
+                        </div>
+                        <span *ngIf="docFileName">
+                            Name: {{docFileName}}
+                        </span>
+                        <p style="text-align: center;" class="text-danger error_msg"
+                            *ngIf="!docFileName && showFileNameMsg">
+                            File name is not found. Please upload file
+                        </p>
+                        <!--end::Controls-->
+                        <div class="mb-5 fv-row fv-plugins-icon-container">
+                            <!--begin::Label-->
+                            <label class=" form-label">Enter File Name*</label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            <input type="text" class="form-control mb-2" formControlName="fileName" placeholder="Title"
+                                value="">
+                            <p class="text-danger error_msg"
+                                *ngIf="uploadForm.controls['fileName'].hasError('required') && isInvalidForm">
+                                File name is mandatory.
+                            </p>
+
+                        </div>
+                    </div>
+                    <!--end::Dropzone-->
+                    <!--begin::Hint-->
+                    <div class="form-text text-right d-flex justify-content-end">
+                        <button class="btn btn-sm fs-8 btn-primary" type="submit">
+                            <span>Upload </span>
+                        </button>
+                    </div>
+                    <!--end::Hint-->
+                </div>
+                <!--end::Input group-->
+            </div>
+            <!--end::Modal body-->
+        </form>
+        <!--end::Form-->
+    </div>
+
+</p-dialog>

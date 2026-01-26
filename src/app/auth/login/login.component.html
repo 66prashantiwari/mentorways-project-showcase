@@ -1,0 +1,128 @@
+<app-loader [show]="loader"></app-loader>
+<div id="kt_body" class="auth-bg">
+
+  <div class="d-flex flex-column flex-root">
+    <!--begin::Authentication - Sign-in -->
+    <div class="d-flex flex-column flex-lg-row flex-column-fluid login">
+      <!--begin::Body-->
+      <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-1">
+        <!--begin::Content-->
+        <div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
+          <!--begin::Logo-->
+          <a href="../../demo11/dist/pages/user-profile/index2.html" class="mb-0 mb-lg-12 text-white fs-1 fw-bolder">
+            Mentorwayz
+          </a>
+          <!--end::Logo-->
+          <!--begin::Image-->
+          <img class="d-none d-lg-block mx-auto w-275px w-md-50 w-xl-375px mb-10 mb-lg-20"
+            src="assets/media/auth/agency.png" alt="" />
+          <!--end::Image-->
+
+          <!--end::Text-->
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-lg-row-fluid w-lg-50  order-2 order-lg-2">
+        <!--begin::Form-->
+        <div class="d-flex flex-center flex-column flex-lg-row-fluid">
+          <!--begin::Wrapper-->
+          <div class="w-lg-500px p-10">
+            <!--begin::Form-->
+            <form [formGroup]="loginForm" class="form w-100" novalidate="novalidate" id="kt_sign_in_form" action="#">
+              <div class="text-end mb-20 fw-semibold">
+                <span>New User ? <a class="text-primary" routerLink="/auth/sign-up">Sign Up</a></span>
+              </div>
+              <!--begin::Heading-->
+              <div class="mb-10">
+                <!--begin::Title-->
+                <h2 class="text-dark fw-bolder mb-3">Welcome Back</h2>
+                <p>Login to continue</p>
+                <!--end::Title-->
+                <!--begin::Subtitle-->
+                <!-- <div class="text-gray-500 fw-semibold fs-6">Your ai enabled mentorship platform</div> -->
+                <!--end::Subtitle=-->
+              </div>
+              <!--begin::Heading-->
+
+
+              <!--end::Separator-->
+              <!--begin::Input group=-->
+              <div class="fv-row mb-8">
+                <!--begin::Email-->
+                <input type="text" formControlName="email" placeholder="Email" name="email" autocomplete="off"
+                  class="form-control bg-transparent" />
+                <p class="text-danger error_msg"
+                  *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].hasError('required')">
+                  <small>Email Is Mandatory.</small>
+                </p>
+                <p class="text-danger error_msg"
+                  *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].hasError('email')">
+                  <small>Email Format In Correct.</small>
+                </p>
+                <!--end::Email-->
+              </div>
+              <!--end::Input group=-->
+              <div class="fv-row mb-3">
+                <!--begin::Password-->
+                <input type="password" formControlName="password" placeholder="Password" name="password"
+                  autocomplete="off" class="form-control bg-transparent" />
+                <p class="text-danger error_msg"
+                  *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].hasError('required')">
+                  <small>Password Is Mandatory.</small>
+                </p>
+                <!--begin::Error Messege-->
+                <p class="text-danger error_msg" *ngIf="errorMessage">
+                  <b>{{errorMessage}}</b>
+                </p>
+                <!--end::Password-->
+              </div>
+              <!--end::Input group=-->
+              <!--begin::Wrapper-->
+              <div>
+
+
+              </div>
+              <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
+                <div></div>
+                <!--begin::Link-->
+                <a routerLink="/auth/forgot-password" class="link-primary">Forgot Password
+                  ?</a>
+                <!--end::Link-->
+              </div>
+              <div class="w-100">
+                <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" (reset)="handleReset()" (expire)="handleExpire()"
+                  (load)="handleLoad()" (success)="handleSuccess($event)" [useGlobalDomain]="false"
+                  formControlName="recaptcha">
+                </ngx-recaptcha2>
+                <p class="text-danger error_msg"
+                  *ngIf="loginForm.controls['recaptcha'].touched && loginForm.controls['recaptcha'].hasError('required')">
+                  <b>Recaptcha is Mandatory.</b>
+                </p>
+              </div>
+              <br />
+              <!--end::Wrapper-->
+              <!--begin::Submit button-->
+              <div class="d-grid mb-10">
+                <button type="submit" id="kt_sign_in_submit" class="btn btn-primary" (click)="loginAccount()">
+                  <!--begin::Indicator label-->
+                  <span class="indicator-label">Login to Your Account</span>
+                  <!--end::Indicator label-->
+                  <app-loader [show]="loader"></app-loader>
+                </button>
+              </div>
+
+              <!--end::Submit button-->
+
+            </form>
+            <!--end::Form-->
+          </div>
+          <!--end::Wrapper-->
+        </div>
+        <!--end::Form-->
+
+      </div>
+      <!--end::Body-->
+      <!--begin::Aside-->
+
+    </div>
+  </div>
+</div>

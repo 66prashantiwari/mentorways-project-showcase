@@ -1,0 +1,68 @@
+<app-loader [show]="loader"></app-loader>
+<!--begin::Team-->
+<div class="card">
+  <div class="card-header cursor-pointer align-items-center">
+    <!--begin::Card title-->
+    <div class="card-title m-0">
+      <h3 class="fw-semibold m-0 fs-6">Mentor List</h3>
+
+    </div>
+    <!--end::Card title-->
+    <a *ngIf="loginDetails?.roleId==101 && programDetails?.statusLabel !='Completed'" class="btn btn-light fs-8 btn-sm"
+      routerLink="/cordinator/mapping/{{ this.id }}"><svg _ngcontent-wty-c115="" xmlns=" http://www.w3.org/2000/svg"
+        width="12" height="12" fill="currentColor" viewBox="0 0 16 16" class="bi bi-pencil me-3">
+        <path _ngcontent-wty-c115=""
+          d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z">
+        </path>
+      </svg>Manage Mentor Mapping
+    </a>
+  </div>
+  <div class="card-body">
+
+
+    <!--begin::Slider-->
+    <div class="tns tns-default">
+
+      <p-carousel [value]="mentorlist" [numVisible]="1" [numScroll]="1">
+        <ng-template let-mentor pTemplate="item">
+          <div class="product-item">
+            <div class="product-item-content">
+              <div class="p-mb-3">
+
+              </div>
+              <div class="text-center">
+                <!--begin::Photo-->
+                <div
+                  class="octagon mx-auto mb-3 d-flex w-60px h-60px bgi-no-repeat bgi-size-contain bgi-position-center"
+                  style="background-image:url('https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg')">
+                </div>
+                <!--end::Photo-->
+                <!--begin::Person-->
+                <div class="mb-0">
+                  <!--begin::Name-->
+                  <a class="text-dark fw-semibold text-hover-primary fs-6">{{mentor?.firstName}}
+                    {{mentor?.lastName}}</a>
+                  <!--end::Name-->
+                  <!--begin::Position-->
+                  <div class="text-muted fs-7 fw-light"><span>{{mentor?.email}}
+                    </span>
+                    <!-- <a routerLink="" class="badge badge-light-primary fw-bold me-auto px-3 py-2">Edit</a> -->
+                    <!-- <a 
+                              class="badge badge-light-primary fw-bold me-auto px-3 py-2">Edit</a> -->
+                  </div>
+
+                  <!--begin::Position-->
+                </div>
+                <!--end::Person-->
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+      <!--end::Button-->
+    </div>
+    <!--end::Slider-->
+
+  </div>
+</div>
+<!--end::Team-->

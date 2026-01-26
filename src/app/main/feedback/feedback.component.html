@@ -1,0 +1,141 @@
+<app-loader [show]="loader"></app-loader>
+<div id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
+
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Page-->
+        <div class="page d-flex flex-row flex-column-fluid">
+            <!--begin::Wrapper-->
+            <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+                <!--begin::Header-->
+                <app-header *ngIf="loginDetails?.roleId=='101'"></app-header>
+                <app-mentee-header *ngIf="loginDetails?.roleId=='103'"></app-mentee-header>
+                <app-mentor-header *ngIf="loginDetails?.roleId=='102'"></app-mentor-header>
+                <!--end::Header-->
+                <!--begin::Toolbar-->
+                <div class="toolbar py-2 " id="kt_toolbar">
+                    <!--begin::Container-->
+                    <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
+                        <!--begin::Page title-->
+                        <div class="page-title d-flex flex-column me-3">
+                            <!--begin::Title-->
+                            <h1 class="d-flex text-gray my-1 fs-5">Feedback List</h1>
+                            <!--end::Title-->
+                            <!--begin::Breadcrumb-->
+                            <ul class="breadcrumb breadcrumb-dot fw-light text-gray-400 fs-8">
+                                <!--begin::Item-->
+                                <!-- <li class="breadcrumb-item text-gray-600">
+                           <a routerLink="/SurveyAnswer/SurveyAnswerForm" routerLinkActive="active">Dashboard</a>
+                        </li> -->
+                                <!--end::Item-->
+                                <!--begin::Item-->
+                                <li class="breadcrumb-item text-gray-600"><a
+                                        routerLink="/cordinator/CoordinatorDashboard" routerLinkActive="active">Home</a>
+                                </li>
+                                <!--end::Item-->
+                                <li class="breadcrumb-item text-gray-5000">
+                                    Feedback List
+                                </li>
+                                <!--begin::Item-->
+                                <!-- <li class="breadcrumb-item text-gray-500">Survey
+                           List</li> -->
+                                <!-- <li class="breadcrumb-item text-gray-600"> <a routerLink="/SurveyAnswer/SurveyAnswerForm"
+                              routerLinkActive="active">Survey
+                              Answer Form </a></li> -->
+                                <!--end::Item-->
+                            </ul>
+                            <!--end::Breadcrumb-->
+                        </div>
+                        <!--end::Page title-->
+                        <a routerLink="/cordinator/CoordinatorDashboard" routerLinkActive="active"
+                            class="btn btn-gray btn-sm fs-9">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="svg replaced-svg ">
+                                <line x1="19" y1="12" x2="5" y2="12"></line>
+                                <polyline points="12 19 5 12 12 5"></polyline>
+                            </svg>
+                            Go Back
+                        </a>
+                    </div>
+                    <!--end::Container-->
+                </div>
+                <!--end::Toolbar-->
+                <!--begin::Container-->
+                <div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
+                    <!--begin::Post-->
+                    <div class="content flex-row-fluid" id="kt_content">
+                        <!--begin::Documents toolbar-->
+                        <div class="d-flex flex-wrap flex-stack ">
+                        </div>
+                        <!--end::Documents toolbar-->
+                        <!--begin::Row-->
+                        <div class="row g-6 g-xl-9">
+                            <div class="card card-flush ">
+                                <!--begin::Card header-->
+                                <div class="card-body">
+
+                                    <div class="card-header py-2 px-0">
+                                        <!-- <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button> -->
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+
+                                            <input type="text" id="kt_filter_search"
+                                                (input)="dt1.filterGlobal(searchvalue, 'contains')"
+                                                class="form-control form-control-solid w-250px ps-10"
+                                                placeholder="Search Feedback" />
+                                        </span>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <!--begin::Table-->
+                                        <p-table #dt1 [value]="feedbackList" [paginator]="true" [rows]="10"
+                                            [globalFilterFields]="['title','desc','questionnaireid']"
+                                            class="table align-middle table-striped table-hover " id="kt_table_users">
+                                            <!--begin::Table head-->
+                                            <ng-template pTemplate="header">
+                                                <!--begin::Table row-->
+                                                <tr class="text-start text-muted fw-semibold fs-8 text-uppercase gs-0">
+                                                    <th pSortableColumn="title" class="min-w-125px " field="title">
+                                                        Name<p-sortIcon field="name"></p-sortIcon></th>
+                                                    <th pSortableColumn="desc" class="min-w-125px " field="desc">
+                                                        Comment<p-sortIcon field="name"></p-sortIcon></th>
+                                                    <th pSortableColumn="questionnaireid" field="questionnaireid"
+                                                        class="min-w-125px">
+                                                        Rating<p-sortIcon field="name"></p-sortIcon></th>
+
+                                                    <!-- <th class="text-end min-w-100px">Actions</th> -->
+                                                </tr>
+
+                                            </ng-template>
+
+                                            <ng-template pTemplate="body" let-item class="text-gray-600 fw-semibold">
+
+                                                <tr>
+                                                    <td><a class="text-gray-800 text-hover-primary">{{item?.Name}}</a>
+                                                    </td>
+                                                    <td>{{item?.Comment}}</td>
+
+                                                    <td>{{item?.Rating}}</td>
+
+                                                </tr>
+
+                                            </ng-template>
+                                            <!--end::Table body-->
+                                        </p-table>
+
+                                        <!--end::Table-->
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--end::Post-->
+        </div>
+
+        <app-footer></app-footer>
+
+    </div>
+</div>

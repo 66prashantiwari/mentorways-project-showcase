@@ -1,0 +1,177 @@
+<div class="card">
+  <div class="card-header cursor-pointer align-items-center">
+    <!--begin::Card title-->
+    <div class="card-title m-0">
+      <h3 class="fw-semibold m-0 fs-6">Notes</h3>
+    </div>
+    <a *ngIf="programDetails?.statusLabel !='Completed'" (click)="openDialog()"
+      class="text-gray-800 text-hover-success d-flex flex-column" data-bs-toggle="modal"
+      data-bs-target="#kt_modal_upload">
+      <!--begin::Image-->
+      <div class="symbol symbol-40px mb-0">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle"
+          viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+          <path
+            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+        </svg>
+      </div>
+      <!--end::Image-->
+
+    </a>
+    <!--end::Card title-->
+    <!--begin::Name-->
+
+    <!--end::Name-->
+  </div>
+  <div class="card-body">
+    <div class="mb-5">
+
+      <!--begin::files-->
+      <div class="row">
+        <!--begin::Col-->
+        <p-table [value]="notesList" [paginator]="false" [rows]="10" responsiveLayout="scroll" [selection]="notesList"
+          #dt1 [rowHover]="true" sortMode="multiple">
+          <ng-template pTemplate="header">
+            <tr class="text-start text-muted fw-bold fs-8 text-uppercase gs-0">
+
+              <!--begin::files-->
+              <div class="row">
+                <!--begin::Col-->
+                <p-table [value]="notesList" [rows]="10" responsiveLayout="scroll" #dt1 [rowHover]="true"
+                  sortMode="multiple">
+                  <ng-template pTemplate="body" let-note>
+            <tr>
+              <td>
+                <a class="text-gray-800 text-hover-success d-flex flex-column">
+                  <!--begin::Image-->
+                  <div class="symbol symbol-40px mb-2">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path opacity="0.3"
+                        d="M19 22H5C4.4 22 4 21.6 4 21V3C4 2.4 4.4 2 5 2H14L20 8V21C20 21.6 19.6 22 19 22Z"
+                        fill="currentColor"></path>
+                      <path d="M15 8H20L14 2V7C14 7.6 14.4 8 15 8Z" fill="currentColor"></path>
+                    </svg>
+                  </div>
+                </a>
+              </td>
+              <td>
+                <!--begin::Title-->
+                <div class="fs-6 fw-semibold mb-1 disign-eli" pTooltip="{{note.notes}}">{{note.notes}}</div>
+                <!--end::Title-->
+              </td>
+              <td>
+                <div class="fs-7 fw-normal ">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                    class="bi bi-person-fill me-1" viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                  </svg>{{note.firstName}}{{note.lastName}}
+                </div>
+              </td>
+              <td class="text-end">
+                <div class="fs-8 fw-light text-gray-600"><span class="me-3"></span><span>{{note.modifiedDate |
+                    date}}</span></div>
+              </td>
+              <td *ngIf="loginEmployeeId == note.Employeeid">
+                <a class="btn btn-light-primary btn-sm btn-icon  me-2" data-bs-toggle="modal"
+                  data-bs-target="#kt_modal_add_user" (click)="edit(note)" title="Edit Employee">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-pencil" viewBox="0 0 16 16">
+                    <path
+                      d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z">
+                    </path>
+                  </svg>
+                </a>
+                <a (click)="deleteNotes(note)" class="btn btn-light-danger btn-sm btn-icon " data-bs-toggle="modal"
+                  data-bs-target="#delete" title="Delete Program" data-kt-users-table-filter="delete_row">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-trash-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                  </svg>
+                </a>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+
+
+        <!--end::Col-->
+
+
+
+
+
+        <!--begin::Col-->
+        <div class="col-md-6 col-lg-4 col-xl-4">
+          <!--begin::Card-->
+          <div class="card h-100">
+            <!--begin::Card body-->
+
+            <!--end::Card body-->
+          </div>
+          <!--end::Card-->
+        </div>
+        <!--end::Col-->
+      </div>
+      <!--end::Team-->
+
+      <p-dialog header="Add Notes" [(visible)]="sharedDocumentNotes" [style]="{width: '60vw'}" [modal]="true"
+        (onHide)="cancelNotes()" [draggable]="false" [resizable]="false" (onHide)="cancel()">
+        <!-- <div class="dropzone dropzone-queue mb-2">
+          <div id="menu">
+            <button class="btn btn-primary" (click)="sharedDocumentToAny()" style="margin-right: 10px;">
+              Shared
+            </button>
+          </div>
+        </div> -->
+        <!--begin::Modal dialog-->
+        <div class="modal-content">
+          <!--begin::Form-->
+          <form class="form" [formGroup]="notesForm" (ngSubmit)="onSubmitNotes()">
+            <!--begin::Modal body-->
+            <div class="modal-body pt-10 pb-15 px-lg-17">
+              <!--begin::Input group-->
+              <div class="form-group">
+                <!--begin::Dropzone-->
+                <div class="dropzone dropzone-queue mb-2" id="kt_modal_upload_dropzone">
+                  <div class="mb-10 fv-row fv-plugins-icon-container">
+                    <!--begin::Label-->
+                    <label class=" form-label">Select To Send File</label>
+                    <!--end::Label-->
+                    <p-dropdown class="form-control mb-2" [options]="accessList" formControlName="selectedRole"
+                      placeholder="Select User">
+                    </p-dropdown>
+                    <p class="text-danger error_msg"
+                      *ngIf="notesForm.controls['selectedRole'].hasError('required') && isInvalidForm">
+                      Selected role is mandatory.
+                    </p>
+                    <!--begin::Label-->
+                    <label class=" form-label">Notes</label>
+                    <!--end::Label-->
+                    <!--begin::Input-->
+                    <textarea type="text" class="form-control mb-2" formControlName="selectedNotes" placeholder="Title"
+                      value=""></textarea>
+                    <p class="text-danger error_msg"
+                      *ngIf="notesForm.controls['selectedNotes'].hasError('required') && isInvalidForm">
+                      Notes is mandatory.
+                    </p>
+                    <!--end::Input-->
+
+                  </div>
+                  <!--end::Controls-->
+                </div>
+                <div class="form-text text-right d-flex justify-content-end">
+                  <button class="btn btn-primary" type="submit">
+                    <span>Submit </span>
+                  </button>
+                  <!-- <a type="submit" class="btn btn-primary">Submit</a> -->
+                </div>
+              </div>
+              <!--end::Input group-->
+            </div>
+            <!--end::Modal body-->
+          </form>
+          <!--end::Form-->
+        </div>
+      </p-dialog>

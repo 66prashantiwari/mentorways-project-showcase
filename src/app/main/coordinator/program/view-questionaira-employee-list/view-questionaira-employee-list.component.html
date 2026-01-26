@@ -1,0 +1,221 @@
+<app-loader [show]="loader"></app-loader>
+
+<div id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
+  <div class="d-flex flex-column flex-root">
+    <!--begin::Page-->
+    <div class="page d-flex flex-row flex-column-fluid">
+      <!--begin::Wrapper-->
+      <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+        <!--begin::Header-->
+        <!-- <app-header></app-header> -->
+        <!--end::Header-->
+        <!--begin::Toolbar-->
+        <div class="toolbar py-2" id="kt_toolbar">
+          <!--begin::Container-->
+          <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
+            <!--begin::Page title-->
+            <div class="page-title d-flex flex-column me-3">
+              <!--begin::Title-->
+              <h1 class="d-flex text-gray my-1 fs-5">View Response</h1>
+              <!--end::Title-->
+              <!--begin::Breadcrumb-->
+              <ul class="breadcrumb breadcrumb-dot fw-light text-gray-400 fs-8">
+                <!--begin::Item-->
+
+                <li class="breadcrumb-item text-gray-600" *ngIf="loginDetails?.roleId == '101'">
+                  <a routerLink="/cordinator/CoordinatorDashboard" routerLinkActive="active">Home</a>
+                </li>
+                <li class="breadcrumb-item text-gray-600" *ngIf="loginDetails?.roleId == '102'">
+                  <a routerLink="/mentor/MentorDashboard" routerLinkActive="active">Home</a>
+                </li>
+                <li class="breadcrumb-item text-gray-600" *ngIf="loginDetails?.roleId == '103'">
+                  <a routerLink="/mentee/menteeDashboard" routerLinkActive="active">Home</a>
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <!-- <li class="breadcrumb-item text-gray-500"
+                   *ngIf="loginDetails?.roleId !== '102' && loginDetails?.roleId !== '103' "><a href=""
+                     routerLink="/cordinator/program" routerLinkActive="active">Program</a>
+                 </li> -->
+                <li class="breadcrumb-item text-gray-500">
+                  <a href="" routerLink="/mentee/MenteeProgram" routerLinkActive="active">Program</a>
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <li *ngIf="loginDetails?.roleId == '101' " class="breadcrumb-item text-gray-600"><a
+                    routerLink="/cordinator/ProgramDetail/{{id}}" routerLinkActive="active">Program Details</a></li>
+                <li *ngIf="loginDetails?.roleId == '102'" class="breadcrumb-item text-gray-600"><a
+                    routerLink="/mentor/program-details/{{id}}" routerLinkActive="active">Program Details</a></li>
+                <li *ngIf="loginDetails?.roleId == '103' " class="breadcrumb-item text-gray-600"><a
+                    routerLink="/mentee/ProgramDetail/{{id}}" routerLinkActive="active">Program Details</a></li>
+                <li class="breadcrumb-item text-gray-500">
+                  <a>View Response</a>
+                </li>
+                <!--end::Item-->
+              </ul>
+              <!--end::Breadcrumb-->
+            </div>
+            <!--end::Page title-->
+            <div class="" *ngIf="loginDetails?.roleId == '101' ">
+              <a routerLink="/cordinator/ProgramDetail/{{id}}" routerLinkActive="active"
+                class="btn btn-gray btn-sm fs-9"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="svg replaced-svg ">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Go Back</a>
+            </div>
+            <div class="" *ngIf="loginDetails?.roleId == '102' ">
+              <a routerLink="/mentor/program-details/{{id}}" routerLinkActive="active"
+                class="btn btn-gray btn-sm fs-9"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="svg replaced-svg ">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Go Back</a>
+            </div>
+            <div class="" *ngIf="loginDetails?.roleId == '103' ">
+              <a routerLink="/mentee/ProgramDetail/{{id}}" routerLinkActive="active"
+                class="btn btn-gray btn-sm fs-9"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="svg replaced-svg ">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Go Back</a>
+            </div>
+          </div>
+          <!--end::Container-->
+        </div>
+        <!--end::Toolbar-->
+        <!--begin::Container-->
+        <div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
+          <div id="kt_content" class="content flex-row-fluid">
+            <div class="col-lg-12">
+              <div class="card card-flush">
+                <!--begin::Card header-->
+                <div class="card-body">
+                  <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-3x border-0 fs-7 fw-semibold mb-3"
+                    id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link text-active-primary active " id="pills-mentor-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-mentor" type="button" role="tab" aria-controls="pills-mentor"
+                        aria-selected="false" tabindex="-1">Mentor</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link text-active-primary " id="pills-mentee-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-mentee" type="button" role="tab" aria-controls="pills-mentee"
+                        aria-selected="true">Mentee</a>
+                    </li>
+                    <!-- <li class="nav-item" role="presentation">
+                       <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+                       </li> -->
+                  </ul>
+                  <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade active show" id="pills-mentor" role="tabpanel"
+                      aria-labelledby="pills-mentor-tab">
+                      <!--begin::Table container-->
+                      <div class="table-responsive">
+                        <!--begin::Table-->
+                        <p-table [value]="mentorlist" [paginator]="true" [rows]="10" id="kt_widget_table_3"
+                          class="table table-hover table-striped align-middle fs-6 gy-4 my-0 pb-3"
+                          data-kt-table-widget-3="all">
+                          <ng-template pTemplate="header">
+
+                            <tr class="text-start text-muted fw-semibold fs-8 text-uppercase gs-0">
+                              <th class="min-w-125px ">Name</th>
+                              <th class="min-w-125px ">Email</th>
+                              <th class="min-w-125px ">Status</th>
+                              <th class="text-end ">Action</th>
+                            </tr>
+                          </ng-template>
+                          <ng-template pTemplate="body" let-mentor>
+                            <tr>
+                              <td><a class="text-gray-800 text-hover-primary">{{mentor.firstName}}
+                                  {{mentor.lastName}}</a></td>
+                              <td>{{mentor.email}}</td>
+                              <td>success</td>
+                              <td class="text-end">
+
+                                <a (click)="veiwRespnses(mentor)" class="btn btn-light-success btn-sm btn-icon me-2"
+                                  title="View Program">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-eye" viewBox="0 0 16 16">
+                                    <path
+                                      d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                    <path
+                                      d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                  </svg>
+                                </a>
+
+                              </td>
+
+                            </tr>
+
+                          </ng-template>
+                          <!--end::Table-->
+                        </p-table>
+
+                        <!--end::Table-->
+                      </div>
+                      <!--end::Table container-->
+                    </div>
+                    <div class="tab-pane fade " id="pills-mentee" role="tabpanel" aria-labelledby="pills-responed-tab">
+                      <!--begin::Table container-->
+                      <div class="table-responsive">
+                        <!--begin::Table-->
+                        <p-table [value]="menteelist" [paginator]="true" [rows]="10" id="kt_widget_table_3"
+                          class="table table-row-dashed align-middle fs-6 gy-4 my-0 pb-3" data-kt-table-widget-3="all">
+                          <ng-template pTemplate="header">
+
+                            <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                              <th class="min-w-125px ">Name</th>
+                              <th class="min-w-125px ">Email</th>
+                              <th class="min-w-125px ">Status</th>
+                              <th class="text-end ">Action</th>
+                            </tr>
+                          </ng-template>
+                          <ng-template pTemplate="body" let-mentee>
+                            <tr>
+                              <td><a class="text-gray-800 text-hover-primary">{{mentee.firstName}}
+                                  {{mentee.lastName}}</a></td>
+                              <td>{{mentee.email}}</td>
+                              <td>success</td>
+                              <td class="text-end">
+                                <a (click)="veiwRespnses(mentee)" class="btn btn-light-success btn-sm btn-icon me-2"
+                                  title="View Program">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-eye" viewBox="0 0 16 16">
+                                    <path
+                                      d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                    <path
+                                      d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                  </svg>
+                                </a>
+
+                              </td>
+
+                            </tr>
+
+                          </ng-template>
+                          <!--end::Table-->
+                        </p-table>
+
+                        <!--end::Table-->
+                      </div>
+                      <!--end::Table container-->
+                    </div>
+                    <!--  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div> -->
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

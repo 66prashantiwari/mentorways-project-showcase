@@ -1,0 +1,277 @@
+<div class="d-flex flex-wrap flex-stack mb-2">
+  <h4 class="fw-semibold fs-6 mb-1">
+    Appointment Details
+    <span class="fs-8 text-gray-500 fw-normal ms-1">Active</span>
+  </h4>
+
+  <!-- <div class="d-flex flex-wrap my-2">
+        <div class="me-4">
+          
+            <select name="status" data-control="select2" data-hide-search="true" class="form-select form-select-sm form-select-solid w-125px">
+                <option value="Active" selected="selected">Active</option>
+                <option value="Approved">In Progress</option>
+                <option value="Declined">To Do</option>
+                <option value="In Progress">Completed</option>
+            </select>
+            
+        </div>
+        <a routerLink="/main/createSession" class="btn btn-success btn-sm" >Create Session</a>
+    </div> -->
+</div>
+
+<div class="row g-6 g-xl-9">
+  <form class="form d-flex flex-column flex-lg-row">
+    <!--begin::Aside column-->
+    <div class="d-flex flex-column gap-7 gap-lg-10 w-400 w-lg-400px mb-7 me-lg-10">
+      <!--begin::Thumbnail settings-->
+      <div class="card card-flush">
+        <!--begin::Card header-->
+        <div class="card-header px-5">
+          <!--begin::Card title-->
+          <div class="card-title">
+            <h4 class="fw-semibold fs-6">Appointments</h4>
+          </div>
+          <!--end::Card title-->
+        </div>
+        <!--end::Card header-->
+        <!--begin::Card body-->
+        <div class="card-body text-center pt-0">
+          <!-- ===Start list tabs==== -->
+          <nav>
+            <div class="nav nav-tabs border-0" id="session-tab" role="tablist">
+              <a class="mb-4 me-4 nav-link  btn btn-icon btn-outline btn-bg-light btn-active-light-success btn-flex flex-column flex-center w-90px h-90px border-gray-200"
+                data-kt-button="true" id="nav-session1-tab" data-bs-toggle="tab" data-bs-target="#nav-session1"
+                type="button" role="tab" aria-controls="nav-session1" aria-selected="true"
+                *ngFor="let appointment of appointmentList; let i = index;" (click)="appointmentDetailId(appointment)">
+                <!--begin::Icon-->
+
+                <span class="mb-2">
+                  <i class="fonticon-calendar fs-2"></i>
+                </span>
+                <!--end::Icon-->
+                <!--begin::Label-->
+                <span class="fs-8 fw-semibold"> {{
+                  appointment?.startTime | date : "shortDate"
+                  }} <br>
+                  {{
+                  appointment?.startTime | date : "shortTime"
+                  }}</span>
+
+                <!--end::Label-->
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!--end::Aside column-->
+    <!--begin::Main column-->
+    <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+      <!--begin::General options-->
+      <div class="card card-flush h-300px overflow-auto">
+        <!--begin::Card header-->
+        <div class="card-header px-5">
+          <div class="card-title">
+            <h4 class="fw-semibold fs-6">Appointments</h4>
+          </div>
+        </div>
+
+        <!-- <div class="card-body pt-0"> -->
+
+        <div class="session-bx">
+          <div class="tab-content" id="session-tabContent" *ngIf="appointmentSection ">
+            <div class="tab-pane fade show active" id="nav-session1" role="tabpanel" aria-labelledby="nav-session1-tab">
+              <div class="timeline-content mb-10 mt-n1">
+                <div class="pe-3 mb-3 px-5">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <div class="fs-6 fw-semibold mb-0">Participants Name</div>
+
+                      <div class="d-flex align-items-center mt-1 fs-6">
+                        <div class="text-muted me-2 fs-8">
+                          Appointment time at
+                          {{
+                          appointmentDetails?.startTime | date : "shortTime"
+                          }}
+
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <a class="btn btn-light-dark btn-sm fs-9 ng-star-inserted me-2"
+                        (click)="deleteAppointmentDetails(appointmentDetails)"
+                        *ngIf=" userDetails.roleId==103">Cancel</a>
+                      <a class="btn btn-light-dark btn-sm fs-9 ng-star-inserted me-2"
+                        (click)="deleteAppointmentDetails(appointmentDetails)"
+                        *ngIf=" userDetails.roleId==102">Cancel</a>
+                      <a class="btn btn-primary btn-sm fs-9 ng-star-inserted"
+                        (click)="rescheduleAppointment(appointmentDetails)"
+                        *ngIf="userDetails.roleId==103">Reschedule</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="overflow-auto p-4 bg-light-green rounded">
+                  <div
+                    class="d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-5">
+                    <a class="fs-5 text-dark text-hover-success fw-semibold min-w-300px"><label
+                        class="form-check form-check-custom form-check-inline form-check-solid me-5">
+                        <!-- <input class="form-check-input" name="ravi[]" type="checkbox" value="1" /> -->
+                        <span class="fw-semibold ps-2 fs-6">{{ appointmentDetails?.mentorName }}
+                          {{ appointmentDetails?.mentorLastname }}</span>
+                      </label></a>
+
+                    <div class="min-w-125px pe-2">
+                      <span class="text-dark-600 fw-semibold">Mentor</span>
+                    </div>
+
+                    <div class="min-w-200px pe-2">
+                      <span class="badge badge-light-success">{{
+                        appointmentDetails?.appointmentStatusLabel
+                        }}</span>
+                    </div>
+
+                    <!-- <div class="min-w-125px pe-2">
+                                <a  href="" class="btn btn-danger btn-sm ">Cencel</a>
+                             </div> -->
+                  </div>
+
+                  <div
+                    class="d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-0"
+                    *ngIf="appointmentDetails?.menteeId>0">
+                    <a href="" class="fs-5 text-dark text-hover-success fw-semibold min-w-300px"><label
+                        class="form-check form-check-custom form-check-inline form-check-solid me-5">
+                        <!-- <input class="form-check-input" name="ravi[]" type="checkbox" value="1" /> -->
+                        <span class="fw-semibold ps-2 fs-6">{{ appointmentDetails?.menteeName }}
+                          {{ appointmentDetails?.menteeLastname }}</span>
+                      </label></a>
+
+                    <div class="min-w-125px">
+                      <span class="text-dark-400 fw-semibold">Mentee</span>
+                    </div>
+
+                    <div class="min-w-125px">
+                      <span class="badge badge-light-primary">{{
+                        appointmentDetails?.appointmentStatusLabel
+                        }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<p-dialog [(visible)]="display" [modal]="true" class="text-center">
+
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="swal2-icon swal2-error swal2-icon-show" style="display: flex;">
+          <span class="swal2-x-mark">
+            <span class="swal2-x-mark-line-left"></span>
+            <span class="swal2-x-mark-line-right"></span>
+          </span>
+        </div>
+        <div class="swal2-html-container">Are you sure you want to cancel this appointment?
+        </div>
+        <div class="text-center">
+          <button type="button" class="btn btn-light mt-4" (click)="display = false">Cancel</button>
+          <button style="margin-left: 4px;" type="button" class="btn btn-primary mt-4"
+            (click)="deleteProgram()">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+<p-dialog [(visible)]="openSlotsPopup" [modal]="true" class=" appoinment-bx-area" [style]="{ width: '50vw' }"
+  header="Reschedule Appointment Slots ">
+  <div class="row" *ngIf="userDetails.roleId =='102' || userDetails.roleId =='103'">
+    <div class="col-lg-12">
+      <div class="col-sm-6">
+        <div class="d-flex align-items-start flex-wrap">
+          <div class="book-date-head me-6" style="border-left: 0">
+            <label for="appointmentCalendar">
+              <p-calendar [readonlyInput]="true" class="bookingCalander" [minDate]="currentDate"
+                [(ngModel)]="selectedDate1" id="appointmentCalendar" dateFormat="mm.dd.yyyy"
+                (onSelect)="changeSelectedDate($event)" [showOtherMonths]="true">
+                <ng-template pTemplate="date" let-date let-i="rowIndex">
+                  <span style="position: relative">
+                    {{ date.day }}
+                  </span>
+                </ng-template>
+              </p-calendar>
+            </label>
+            <span *ngIf="selectedDate" class="w3-animate-top">{{ getDate(selectedDate1) }}</span>
+            <p class="text-dark fw-semibold">
+              Click to change date
+            </p>
+          </div>
+          <div class="change-date-btn">
+
+            <button name="prev" (click)="getPreviousDate(selectedDate1)"
+              class="btn-previous btn btn-light-danger btn-xs btn-icon me-2">
+              <i class="fa fa-chevron-left fs-9" aria-hidden="true"></i>
+            </button>
+
+            <button name="next" (click)="getNextDate(selectedDate1)"
+              class="btn-next btn btn-light-danger btn-xs btn-icon">
+              <i class="fa fa-chevron-right fs-9" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card my-3">
+
+        <div class="card-body">
+
+          <h4 class="text-start fw-semibold fs-6 appoinment-sel mb-3"> Select a slot</h4>
+
+          <div class="d-flex justify-content-between">
+            <button type="button" (click)="addAppointments()" class="create-btn" *ngIf="userDetails?.roleId == 102">
+              <h2>Create</h2>
+            </button>
+          </div>
+          <div class="appoinment-slots">
+            <div *ngIf="appointmentOpenList?.length <= 0">
+              <h4 class="text-center mb-0">Slots Not Found</h4>
+            </div>
+            <div class="week-row">
+              <!-- <ul class="list-unstyled app-slots" *ngIf="userDetails?.roleId==102">
+                   <li *ngFor="let slots of appointmentOpenList; let i = index" >
+                     <span
+                     > {{ slots.startTime | date:'mediumDate' }}
+                        {{ slots.startTime | date:'shortTime' }}</span>
+ 
+                   </li>
+               </ul> -->
+
+              <div class="list-unstyled app-slots" *ngIf="userDetails?.roleId==103">
+                <button *ngFor="let slots of appointmentOpenList; let i = index;" [value]="slots?.id"
+                  class="btn appoint-btn btn-light-dark btn-sm me-2 mb-2">
+                  <span *ngIf="slots.confirmBook == false" (click)="selectedItem(slots)">
+                    <!-- {{ slots.startTime | date:'mediumDate' }} -->
+                    {{ slots.startTime | date:'shortTime' }}</span>
+
+                  <li *ngIf="slots.confirmBook == true"> <a class="confirm-time">{{ slots?.startTime |
+                      date:'shortTime'}}</a>
+                    <a class="confirm-btn btn btn-sm btn-primary py-1 px-2 fs-8 fw-light"
+                      (click)="BookAppointment(slots)">Confirm</a>
+                  </li>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4"></div>
+    <!-- </div> -->
+  </div>
+</p-dialog>

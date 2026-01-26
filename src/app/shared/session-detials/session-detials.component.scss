@@ -1,0 +1,29 @@
+
+.appoint-btn  li {
+    display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+  }
+  .appoint-btn  a.confirm-time {
+    border: 1px solid #686767;
+    padding: 2px 6px;
+    font-size: 11px;
+    border-radius: 5px;
+    cursor: auto;
+    color: #565454;
+  }
+  .appoint-btn.btn.btn-light-dark:hover:not(.btn-active) {
+    background-color: #eeeeee!important;
+    color: #4a4a4a;
+  }
+  .appoint-btn.btn.btn-light-dark:focus{
+    background-color: #eeeeee!important;
+    color: #4a4a4a;
+  }
+  .appoint-btn  a.confirm-time:hover{
+    color: #565454;
+  }
+  .appoint-btn {
+    width: 196px;
+}

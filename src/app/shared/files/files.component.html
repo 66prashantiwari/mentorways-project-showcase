@@ -1,0 +1,109 @@
+<!--end::Card title-->
+<div class="card">
+  <div class="card-header cursor-pointer align-items-center">
+    <!--begin::Card title-->
+    <div class="card-title m-0">
+      <h3 class="fw-semibold m-0 fs-6">Show file list here</h3>
+    </div>
+    <a *ngIf="programDetails?.statusLabel !='Completed'" (click)="openDialog()"
+      class="text-gray-800 text-hover-success d-flex flex-column">
+      <!--begin::Image-->
+      <div class="symbol symbol-75px mb-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle"
+          viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+          <path
+            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+        </svg>
+      </div>
+      <!--end::Image-->
+
+    </a>
+    <!--end::Card title-->
+
+  </div>
+  <div class="card-body">
+    <div class="mb-5">
+
+      <!--begin::files-->
+      <div class="row">
+        <!--begin::Col-->
+        <p-table [value]="programList" [rows]="10" responsiveLayout="scroll" [selection]="programList" #dt1
+          [rowHover]="true" sortMode="multiple">
+          <ng-template pTemplate="header">
+            <!-- <tr class="text-start text-muted fw-bold fs-8 text-uppercase gs-0">
+
+              <th pSortableColumn="firstName">Document Name <p-sortIcon field="name"></p-sortIcon></th>
+
+              <th pSortableColumn="createDate">Name <p-sortIcon field="name"></p-sortIcon></th>
+              <th class="text-end ">Date </th>
+            </tr> -->
+          </ng-template>
+          <ng-template pTemplate="body" let-program>
+            <tr>
+              <td class="">
+                <!--begin:: Avatar -->
+                <div class="d-flex align-items-center">
+                  <div class="">
+                    <a href="{{imageUrl}}{{program?.documentUrl}}" target="_blank" class=" mb-1 fw-semibold"
+                      style="text-transform: capitalize;">
+                      <div class="symbol symbol-75px me-2">
+                        <img src="assets/media/svg/files/folder-document.svg" class="theme-light-show" alt="" />
+                      </div>
+                    </a>
+                  </div>
+                  <!--end::Avatar-->
+                  <!--begin::User details-->
+                  <div class="d-flex flex-column"> 
+                    <a href="{{imageUrl}}{{program?.documentUrl}}" target="_blank" class=" mb-1 fw-semibold"
+                      style="text-transform: capitalize;">
+                      {{program?.documentname}}</a>
+                    <!-- <span>{{ item.email }}</span> -->
+                  </div>
+                </div>
+                <!--begin::User details-->
+              </td>
+              <!--end::User=-->
+              <!--begin::gender=-->
+              <td>
+                <div class="fs-6 fw-bold "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill="currentColor" class="bi bi-person-fill me-1" viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                  </svg><a>{{program?.firstName}}
+                    {{program?.lastName}}</a></div>
+              </td>
+              <td class="text-end">
+                <!-- routerLink="/main/EmployeeProfile" -->
+                <div class="d-flex justify-content-end">
+                  <div class="fs-7 fw-semibold text-gray-400"><span class="me-3"></span><span>{{program?.modifiedDate |
+                      date}}</span></div>
+                </div>
+              </td>
+              <!--end::Action=-->
+              <td *ngIf="loginEmployeeId == program.Employeeid">
+                <a (click)="deleteDoc(program)" class="btn btn-light-danger btn-sm btn-icon " data-bs-toggle="modal"
+                  data-bs-target="#delete" title="Delete Program" data-kt-users-table-filter="delete_row">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-trash-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                  </svg>
+                </a>
+            </tr>
+          </ng-template>
+          <!-- <p *ngIf="!wayjalist?.length">Data not found</p> -->
+        </p-table>
+        <!--end::Col-->
+      </div>
+      <!--end::files-->
+    </div>
+  </div>
+</div>
+
+<!--end::Team-->
+
+
+<!--begin::Modal - Upload File-->
+<app-document-manger [DisplayDocument]="displayDocument" (hide)="displayDocument=false" [ShareShow]="shareShow"
+  (getProgramDocument)="getProgramDocument()"></app-document-manger>
+<!--end::Modal - Upload File-->

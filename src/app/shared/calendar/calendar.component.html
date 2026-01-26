@@ -1,0 +1,147 @@
+<app-loader [show]="loader"></app-loader>
+<app-header *ngIf="loginDetails.roleId == 101"></app-header>
+<app-mentee-header *ngIf="loginDetails.roleId == 103"></app-mentee-header>
+<app-mentor-header *ngIf="loginDetails.roleId == 102"></app-mentor-header>
+<div class="some">
+    <div id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled program">
+        <!--begin::Theme mode setup on page load-->
+        <!--end::Theme mode setup on page load-->
+        <!--begin::Main-->
+        <!--begin::Root-->
+        <div class="d-flex flex-column flex-root">
+            <!--begin::Page-->
+            <div class="page d-flex flex-row flex-column-fluid">
+                <!--begin::Wrapper-->
+                <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+                    <!--begin::Header-->
+                    <!--end::Header-->
+                    <!--begin::Toolbar-->
+                    <div class="toolbar py-2" id="kt_toolbar">
+                        <!--begin::Container-->
+                        <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
+                            <!--begin::Page title-->
+                            <div class="page-title d-flex flex-column me-3">
+                                <!--begin::Title-->
+                                <h1 class="d-flex text-gray my-1 fs-5">Calendar</h1>
+                                <!--end::Title-->
+                                <!--begin::Breadcrumb-->
+                                <ul class="breadcrumb breadcrumb-dot fw-light text-gray-400 fs-8 ">
+                                    <!--begin::Item-->
+                                    <!-- <li class="breadcrumb-item text-gray-600">
+                  <a href="../../demo11/dist/index.html" class="text-gray-600 text-hover-primary">Home</a>
+                </li> -->
+                                    <!--end::Item-->
+                                    <!--begin::Item-->
+                                    <li class="breadcrumb-item text-gray-600" *ngIf="loginDetails?.roleId == '101' "><a
+                                            routerLink="/cordinator/CoordinatorDashboard"
+                                            routerLinkActive="active">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item text-gray-600" *ngIf="loginDetails?.roleId == '102' "><a
+                                            routerLink="/mentor/MentorDashboard" routerLinkActive="active">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item text-gray-600" *ngIf="loginDetails?.roleId == '103' "><a
+                                            routerLink="/mentee/menteeDashboard" routerLinkActive="active">Home</a>
+                                    </li>
+                                    <!--end::Item-->
+                                    <!--begin::Item-->
+                                    <li class="breadcrumb-item text-gray-500"><a>Calendar</a></li>
+                                    <!--end::Item-->
+                                </ul>
+                                <!--end::Breadcrumb-->
+                            </div>
+                            <!--end::Page title-->
+                            <!--begin::Actions-->
+                            <div class="d-flex align-items-center">
+                                <!--begin::Wrapper-->
+                                <a *ngIf="loginDetails?.roleId == '101' " routerLink="/cordinator/CoordinatorDashboard"
+                                    routerLinkActive="active" class="btn btn-gray btn-sm fs-9"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="svg replaced-svg ">
+                                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                                        <polyline points="12 19 5 12 12 5"></polyline>
+                                    </svg>
+                                    Go Back</a>
+                                <a *ngIf="loginDetails?.roleId == '102' " routerLink="/mentor/MentorDashboard"
+                                    routerLinkActive="active" class="btn btn-gray btn-sm fs-9 "><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="svg replaced-svg ">
+                                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                                        <polyline points="12 19 5 12 12 5"></polyline>
+                                    </svg>
+                                    Go Back</a>
+                                <a *ngIf="loginDetails?.roleId == '103' " routerLink="/mentee/menteeDashboard"
+                                    routerLinkActive="active" class="btn btn-gray btn-sm fs-9"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="svg replaced-svg ">
+                                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                                        <polyline points="12 19 5 12 12 5"></polyline>
+                                    </svg>
+                                    Go Back</a>
+                            </div>
+                            <!--end::Actions-->
+                        </div>
+                        <!--end::Container-->
+                    </div>
+                    <!--end::Toolbar-->
+                    <!--begin::Container-->
+
+                    <div _ngcontent-iul-c108="" id="kt_content_container"
+                        class="d-flex flex-column-fluid align-items-start container-xxl">
+
+                        <full-calendar [options]="calendarOptions">
+
+                            <ng-template #eventContent let-arg>
+
+                                <div class="event-title mt-0" disabled
+                                    routerLink="/mentee/ProgramDetail/{{arg.event?.title.split('/')[5]}}">
+                                    <div class="fs-9  ">
+                                        <button class="event-status3 " disabled
+                                            [ngClass]="{'del-txt position-relative c-btn ': arg.event?.title.split('/')[3]=='3'}">
+                                            {{arg.event?.title.split('/')[1]}}
+                                            {{arg.event?.title.split('/')[2]}}</button>
+                                    </div>
+                                    <div class="d-flex flex-wrap">
+                                        <button class="event-status" disabled
+                                            [ngClass]="{'del-txt position-relative c-btn': arg.event?.title.split('/')[3]=='3'}">
+                                            {{arg.event?.title.split('/')[0] |
+                                            date:'short'}}
+                                        </button>
+                                        <button class="event-status1" disabled
+                                            [ngClass]="{'del-txt position-relative c-btn': arg.event?.title.split('/')[3]=='3'}">
+                                            {{arg.event?.title.split('/')[4]}}</button>
+                                        <button class="event-status1"
+                                            [ngClass]="{'del-txt position-relative c-btn': arg.event?.title.split('/')[3]=='3'}"
+                                            *ngIf="arg.event?.title.split('/')[4]=='102'">Mentor</button>
+                                        <button class="event-status1"
+                                            [ngClass]="{'del-txt position-relative c-btn': arg.event?.title.split('/')[3]=='3'}"
+                                            *ngIf="arg.event?.title.split('/')[4]=='103'">Mentee</button>
+                                        <!-- <button class="event-status2"
+                                       *ngIf="arg.event?.title.split('/')[3]=='1'">Open</button>
+                                    <button class="event-status2"
+                                       *ngIf="arg.event?.title.split('/')[3]=='2'">Booked</button>
+                                    <button class="event-status2"
+                                       *ngIf="arg.event?.title.split('/')[3]=='3'">Cancel</button> -->
+                                    </div>
+                                </div>
+
+
+                            </ng-template>
+                        </full-calendar>
+                    </div>
+
+
+                    <div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+                        <!--begin::Container-->
+                        <app-footer></app-footer>
+                        <!--end::Container-->
+                    </div>
+                    <!--end::Wrapper-->
+                </div>
+                <!--end::Page-->
+            </div>
+        </div>
+    </div>
+</div>

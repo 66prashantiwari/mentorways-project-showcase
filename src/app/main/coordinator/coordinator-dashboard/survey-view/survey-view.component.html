@@ -1,0 +1,169 @@
+<app-loader [show]="loader"></app-loader>
+<div id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
+
+   <div class="d-flex flex-column flex-root">
+      <!--begin::Page-->
+      <div class="page d-flex flex-row flex-column-fluid">
+         <!--begin::Wrapper-->
+         <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+            <!--begin::Header-->
+            <!-- <app-header></app-header> -->
+            <!--end::Header-->
+            <!--begin::Toolbar-->
+            <div class="toolbar py-5 py-lg-5" id="kt_toolbar">
+               <!--begin::Container-->
+               <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
+                  <!--begin::Page title-->
+                  <div class="page-title d-flex flex-column me-3">
+                     <!--begin::Title-->
+                     <h1 class="d-flex text-dark fw-bold my-1 fs-3">Create Survey</h1>
+                     <!--end::Title-->
+                     <!--begin::Breadcrumb-->
+                     <ul class="breadcrumb breadcrumb-dot fw-semibold text-gray-600 fs-7 my-1">
+                        <!--begin::Item-->
+                        <li class="breadcrumb-item text-gray-600">
+                           <a href="../../demo11/dist/index.html" class="text-gray-600 text-hover-primary">Home</a>
+                        </li>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <li class="breadcrumb-item text-gray-600">Survey List</li>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <li class="breadcrumb-item text-gray-600">Create Survey</li>
+                        <!--end::Item-->
+
+                     </ul>
+                     <!--end::Breadcrumb-->
+                  </div>
+                  <!--end::Page title-->
+               </div>
+               <!--end::Container-->
+            </div>
+            <!--end::Toolbar-->
+            <!--begin::Container-->
+            <div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
+               <!--begin::Post-->
+               <div class="content flex-row-fluid survay-area" id="kt_content">
+
+
+                  <form class="form d-flex flex-column flex-lg-row justify-content-center">
+                     <!--begin::Main column-->
+                     <div class="d-flex flex-column  gap-7 gap-lg-10 w-900 w-lg-900px">
+                        <!--begin::General options-->
+
+                        <!------Start multi Question----->
+                        <div class="card card-flush py-4 mb-4">
+                           <!--begin::Card body-->
+                           <div class="card-body pt-0">
+                              <div class="question-bx">
+
+                                 <div class="top-tittle-bx mt-2">
+                                    <h2>Heading Name</h2>
+                                 </div>
+                                 <!-- ======radio===== -->
+                                 <div class="radio py-3" *ngFor="let question of questionData?.question">
+                                    <!--begin::Repeater-->
+                                    <h4 class="mb-4"><span class="me-2"></span>{{question.title}}</h4>
+                                    <div class="row" *ngFor="let option of question?.option">
+                                       <!-- <div class="col-md-6 mb-4" *ngIf="question.inputvaluetypeId==101">
+                                                     <label class="form-check form-check-custom form-check-inline form-check-solid fs-3 me-5  d-flex">
+                                                            <input class="form-check-input me-3"  type="radio"  />
+                                                               {{option.key}}
+                                                            </label>
+                                                </div> -->
+                                       <div *ngIf="question.inputvaluetypeId==101" class="p-field-checkbox mb-3">
+                                          <p-radioButton [inputId]="option.key" name="category" [value]="option"
+                                             [(ngModel)]="selectedCategory" [ngModelOptions]="{standalone: true}"
+                                             [disabled]="option.key === 'R'"></p-radioButton>
+                                          <label [for]="option.key" class="ms-2">{{option.title}}</label>
+                                       </div>
+
+                                       <div class="col-md-6 mb-4" *ngIf="question.inputvaluetypeId==104">
+                                          <input type="text" />
+                                       </div>
+
+                                       <div class="col-md-6 mb-4" *ngIf="question.inputvaluetypeId==104">
+                                          <input type="text" />
+                                       </div>
+
+
+                                       <!-- <div class="col-md-6 mb-4">
+                                                    <label class="form-check form-check-custom form-check-inline form-check-solid fs-3 me-5  d-flex">
+                                                            <input class="form-check-input me-3"  type="radio"  disabled />
+                                                            tuck
+                                                            </label>
+                                                </div>
+                                                 <div class="col-md-6 mb-4">
+                                                     <label class="form-check form-check-custom form-check-inline form-check-solid fs-3 me-5  d-flex">
+                                                            <input class="form-check-input me-3"  type="radio"  disabled />
+                                                               car
+                                                            </label>
+                                                </div>
+                                                <div class="col-md-6 mb-4">
+                                                    <label class="form-check form-check-custom form-check-inline form-check-solid fs-3 me-5  d-flex">
+                                                            <input class="form-check-input me-3"  type="radio"  disabled />
+                                                            tuck
+                                                            </label>
+                                                </div> -->
+
+                                    </div>
+                                    <!--end::Repeater-->
+                                 </div>
+
+
+                                 <div class="bottom-bx">
+                                    <a type="button" class="btn btn-light" href="">
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                          fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                          <path
+                                             d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+                                       </svg>
+                                    </a>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--end::Card body-->
+                        </div>
+                        <!------End Multi Question----->
+
+
+                     </div>
+                     <!--end::Main column-->
+                  </form>
+               </div>
+               <!--end::Post-->
+            </div>
+            <!--end::Container-->
+            <!--begin::Footer-->
+            <div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+               <!--begin::Container-->
+               <div class="container-xxl d-flex flex-column flex-md-row align-items-center justify-content-between">
+                  <!--begin::Copyright-->
+                  <div class="text-dark order-2 order-md-1">
+                     <span class="text-muted fw-semibold me-1">2022&copy;</span>
+                     <a href="https://keenthemes.com" target="_blank"
+                        class="text-gray-800 text-hover-primary">Keenthemes</a>
+                  </div>
+                  <!--end::Copyright-->
+                  <!--begin::Menu-->
+                  <ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
+                     <li class="menu-item">
+                        <a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
+                     </li>
+                     <li class="menu-item">
+                        <a href="https://devs.keenthemes.com" target="_blank" class="menu-link px-2">Support</a>
+                     </li>
+                     <li class="menu-item">
+                        <a href="https://1.envato.market/EA4JP" target="_blank" class="menu-link px-2">Purchase</a>
+                     </li>
+                  </ul>
+                  <!--end::Menu-->
+               </div>
+               <!--end::Container-->
+            </div>
+            <!--end::Footer-->
+         </div>
+         <!--end::Wrapper-->
+      </div>
+      <!--end::Page-->
+   </div>

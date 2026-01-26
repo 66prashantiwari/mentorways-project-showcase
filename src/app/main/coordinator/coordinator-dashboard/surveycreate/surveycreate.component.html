@@ -1,0 +1,301 @@
+<div id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
+   <div class="d-flex flex-column flex-root">
+      <!--begin::Page-->
+      <div class="page d-flex flex-row flex-column-fluid">
+         <!--begin::Wrapper-->
+         <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+            <!-- <app-header></app-header> -->
+            <div class="toolbar py-2" id="kt_toolbar">
+               <!--begin::Container-->
+               <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
+                  <!--begin::Page title-->
+                  <div class="page-title d-flex flex-column me-3">
+                     <!--begin::Title-->
+                     <h1 class="d-flex text-gray my-1 fs-5" *ngIf="!editId">Create Survey</h1>
+                     <h1 class="d-flex text-gray my-1 fs-5" *ngIf="editId">Edit Survey</h1>
+                     <!--end::Title-->
+                     <!--begin::Breadcrumb-->
+                     <ul class="breadcrumb breadcrumb-dot fw-light text-gray-400 fs-8">
+                        <!--begin::Item-->
+                        <li class="breadcrumb-item text-gray-600"><a routerLink="/cordinator/CoordinatorDashboard"
+                              routerLinkActive="active">Home</a>
+                        </li>
+                        <!--end::Item-->
+                        <li class="breadcrumb-item text-gray-600"> <a routerLink="/cordinator/SurveyManagement"
+                              routerLinkActive="active">Survey List</a></li>
+                        <!--begin::Item-->
+                        <li class="breadcrumb-item text-gray-500" *ngIf="!editId">Create Survey</li>
+                        <li class="breadcrumb-item text-gray-500" *ngIf="editId">Edit Survey</li>
+                        <!--end::Item-->
+
+                     </ul>
+                     <!--end::Breadcrumb-->
+                  </div>
+                  <!--end::Page title-->
+               </div>
+               <!--end::Container-->
+            </div>
+            <!--end::Toolbar-->
+            <!--begin::Container-->
+            <div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
+               <!--begin::Post-->
+               <div class="content flex-row-fluid survay-area" id="kt_content">
+
+                  <div class="servay-box">
+                     <ul class="nav nav-pills mb-3 justify-content-center">
+                        <li class="nav-item" role="presentation">
+                           <button class="nav-link active" id="pills-question-tab" data-bs-toggle="pill"
+                              data-bs-target="#pills-question" type="button" role="tab" aria-controls="pills-question"
+                              aria-selected="true">Question</button>
+                        </li>
+
+                     </ul>
+                  </div>
+                  <form class="form d-flex flex-column flex-lg-row justify-content-center" [formGroup]="surveyForm"
+                     (ngSubmit)="onSubmit()">
+                     <!--begin::Main column-->
+                     <div class="d-flex flex-column  gap-2 gap-lg-2 w-900 w-lg-900px">
+                        <!--begin::General options-->
+                        <div class="card card-flush py-2 mb-2">
+                           <!--begin::Card body-->
+                           <div class="card-body pt-0">
+                              <div class="top-tittle-bx">
+                                 <div class="mb-2">
+                                    <input type="text" class="form-control fs-6 toptitle" formControlName="title"
+                                       placeholder="Untitled form">
+                                    <p class="text-danger error_msg"
+                                       *ngIf="surveyForm.controls['title'].hasError('required') && isInvalidForm">
+                                       Title is mandatory.
+                                    </p>
+                                 </div>
+                                 <div class="mb-2">
+                                    <input type="text" class="form-control" formControlName="description"
+                                       placeholder="Form description">
+                                    <p class="text-danger error_msg"
+                                       *ngIf="surveyForm.controls['description'].hasError('required') && isInvalidForm">
+                                       Description is mandatory.
+                                    </p>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--end::Card body-->
+                        </div>
+                        <!------Start multi Question----->
+                        <div class="card card-flush py-2 mb-2" formArrayName="question">
+                           <!--begin::Card body-->
+                           <div class="card-body pt-0"
+                              *ngFor="let question of getQuestion.controls; let QuesIndex = index; let quesFirst = first; let quesLast = last;">
+                              <div [formGroupName]="QuesIndex">
+                                 <div class="question-bx">
+                                    <div class="row p-2">
+                                       <div class="col-md-7">
+                                          <div class="mb-2">
+                                             <input type="hidden" formControlName="sequence" value="{{QuesIndex}}">
+
+                                             <input type="text" class="form-control" formControlName="questionvalue"
+                                                placeholder="Question" required>
+                                             <span>
+                                                <p class="text-danger error_msg"
+                                                   *ngIf="question.get('questionvalue')?.hasError('required') && isInvalidForm">
+                                                   Question is mandatory.
+                                                </p>
+                                             </span>
+
+                                          </div>
+                                       </div>
+                                       <div class="col-md-1">
+                                       </div>
+                                       <div class="col-md-4">
+                                          <p-dropdown [options]="InputList" optionValue="Id" formControlName="inputType"
+                                             placeholder="Select Question Type" [style]="{'width':'100%'}"
+                                             (onChange)="SelectChoice(QuesIndex,$event)" optionLabel="inputvaluetype">
+                                          </p-dropdown>
+                                       </div>
+                                    </div>
+
+                                    <!-- ======radio===== -->
+
+                                    <!-- <form [formGroup]="optionForm"> -->
+                                    <div class="radio py-3" formArrayName="questionOption">
+                                       <!--begin::Repeater-->
+                                       <!-- {{getQuestion |json}} -->
+                                       <div id="kt_ecommerce_add_category_conditions" *ngFor="let options of getQuestionsOptions(QuesIndex).controls;
+                                              let optIndex = index; let optFirst = first; let optLast = last;">
+                                          <!--begin::Form group-->
+                                          <div class="form-group" [formGroupName]="optIndex">
+                                             <div data-repeater-list="kt_ecommerce_add_category_conditions"
+                                                class="d-flex flex-column gap-3">
+                                                <input type="hidden" formControlName="optionSequence"
+                                                   value="{{optIndex}}">
+                                                <div data-repeater-item=""
+                                                   class="form-group d-flex flex-wrap align-items-center gap-5">
+                                                   <!--begin::Select2-->
+                                                   <div class="w-300 w-md-400px  top-tittle-bx"
+                                                      *ngIf="options.value.inputType=='101'">
+                                                      <label
+                                                         class="form-check form-check-custom form-check-inline form-check-solid me-5 d-flex">
+                                                         <input type="radio" name="inputType"
+                                                            class="form-check-input me-3">
+                                                         <input type="text" formControlName="optionsValue"
+                                                            class="form-control" placeholder="Enter option" required>
+                                                      </label>
+                                                      <span>
+                                                         <p class="text-danger error_msg"
+                                                            *ngIf="options.get('optionsValue')?.hasError('required') && isInvalidForm">
+                                                            Option is mandatory.
+                                                         </p>
+                                                      </span>
+                                                   </div>
+
+                                                   <div class="w-300 w-md-400px top-tittle-bx"
+                                                      *ngIf="options.value.inputType=='102'">
+                                                      <label
+                                                         class="form-check form-check-custom form-check-inline form-check-solid me-5 d-flex">
+                                                         <input type="checkbox" class="form-check-input me-3">
+                                                         <input type="text" formControlName="optionsValue"
+                                                            placeholder="Enter Option" class="form-control" required>
+                                                      </label>
+                                                      <span>
+                                                         <p class="text-danger error_msg"
+                                                            *ngIf="options.get('optionsValue')?.hasError('required') && isInvalidForm">
+                                                            Option is mandatory.
+                                                         </p>
+                                                      </span>
+                                                   </div>
+
+                                                   <div class="w-300 w-md-400px top-tittle-bx"
+                                                      *ngIf="options.value.inputType=='104'">
+                                                      <label
+                                                         class="form-check form-check-custom form-check-inline form-check-solid me-5 d-flex">
+                                                         <input type="text" formControlName="optionsValue"
+                                                            class="form-control" placeholder="Enter Your Answer"
+                                                            readonly>
+                                                      </label>
+                                                      <!-- <span>
+                                                            <p class="text-danger error_msg" *ngIf="options.get('optionsValue')?.hasError('required') && isInvalidForm">
+                                                               Option is Mandatory.
+                                                            </p>
+                                                         </span> -->
+                                                   </div>
+
+
+
+                                                   <button type="button" data-repeater-delete=""
+                                                      (click)="removeQuestionOption(QuesIndex,optIndex)"
+                                                      class="btn btn-sm btn-icon btn-light-danger mt-7"
+                                                      *ngIf="!optFirst">
+
+                                                      <span class="svg-icon svg-icon-2">
+                                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <rect opacity="0.5" x="7.05025" y="15.5356" width="12"
+                                                               height="2" rx="1" transform="rotate(-45 7.05025 15.5356)"
+                                                               fill="currentColor" />
+                                                            <rect x="8.46447" y="7.05029" width="12" height="2" rx="1"
+                                                               transform="rotate(45 8.46447 7.05029)"
+                                                               fill="currentColor" />
+                                                         </svg>
+                                                      </span>
+                                                      <!--end::Svg Icon-->
+                                                   </button>
+                                                   <!--end::Button-->
+                                                </div>
+                                             </div>
+                                          </div>
+
+                                          <div class="form-group mt-5" *ngIf="options.value.inputType !=='104'">
+                                             <!--begin::Button-->
+                                             <button type="button" data-repeater-create=""
+                                                [disabled]="!options.value.optionsValue"
+                                                class="btn btn-sm btn-light-danger"
+                                                (click)="addQuestionsOptions(QuesIndex,question.value.inputType)"
+                                                *ngIf="optLast">
+                                                <span class="svg-icon svg-icon-2">
+                                                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                      xmlns="http://www.w3.org/2000/svg">
+                                                      <rect opacity="0.5" x="11" y="18" width="12" height="2" rx="1"
+                                                         transform="rotate(-90 11 18)" fill="currentColor" />
+                                                      <rect x="6" y="11" width="12" height="2" rx="1"
+                                                         fill="currentColor" />
+                                                   </svg>
+                                                </span>
+                                                Add another
+                                             </button>
+
+                                          </div>
+
+                                       </div>
+
+                                    </div>
+
+
+                                    <div class="bottom-bx">
+                                       <button type="button" class="btn btn-sm fs-8 btn-light"
+                                          (click)="removeQuestion(QuesIndex)" *ngIf="!quesFirst">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                             <path
+                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                             <path fill-rule="evenodd"
+                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                          </svg>
+                                       </button>
+
+                                       <button *ngIf="quesLast" type="button" class="btn btn-sm fs-8 btn-light"
+                                          title="Add New Question" (click)="addQuestion()">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                             <path
+                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                             <path
+                                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                          </svg>
+                                       </button>
+
+                                    </div>
+
+                                    <!-- </form> -->
+
+
+
+                                 </div>
+                              </div>
+                           </div>
+                           <!--end::Card body-->
+                        </div>
+                        <!------End Multi Question----->
+
+                        <!--end::General options-->
+                        <div class="d-flex justify-content-end">
+                           <!--begin::Button-->
+                           <a href="" id="kt_ecommerce_add_product_cancel" class="btn btn-light btn-sm fs-8 me-3"
+                              routerLink="/cordinator/SurveyManagement">Cancel</a>
+                           <!--end::Button-->
+                           <!--begin::Button-->
+                           <button type="submit" id="kt_ecommerce_add_category_submit"
+                              class="btn btn-primary btn-sm fs-8" *ngIf="!editId">
+                              <span class="indicator-label">Create </span>
+                              <span class="indicator-progress">Please wait...
+                                 <span
+                                    class="spinner-border spinner-border-sm align-middle ms-2 btn-sm fs-8"></span></span>
+                           </button>
+                           <button class="btn btn-primary" *ngIf="editId">
+                              <span (click)="updateEditServey()">Update </span>
+                           </button>
+                           <!--end::Button-->
+                        </div>
+                     </div>
+                     <!--end::Main column-->
+                  </form>
+               </div>
+               <!--end::Post-->
+            </div>
+            <!--end::Container-->
+            <!--begin::Footer-->
+            <app-footer></app-footer>
+            <!--end::Footer-->
+         </div>
+         <!--end::Wrapper-->
+      </div>
+      <!--end::Page-->
+   </div>

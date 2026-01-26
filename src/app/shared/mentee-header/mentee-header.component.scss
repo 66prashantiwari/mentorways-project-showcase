@@ -1,0 +1,17 @@
+.btn-success{
+    background-color: #50cd89;
+}
+.btn-check:active + .btn.btn-success, .btn-check:checked + .btn.btn-success, .btn.btn-success.active, .btn.btn-success.show, .btn.btn-success:active:not(.btn-active), .btn.btn-success:focus:not(.btn-active), .btn.btn-success:hover:not(.btn-active), .show > .btn.btn-success{
+    background-color: #09bf5c !important;
+}
+
+.fw-bolder img{
+    width: 60%;
+}
+
+.dropdown-toggle::after {
+   
+    margin-left: 0.855em;
+    
+    margin-top: 12px;
+}

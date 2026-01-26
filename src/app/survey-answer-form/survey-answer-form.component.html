@@ -1,0 +1,169 @@
+<div id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled" *ngIf="thankyou<=0">
+
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Page-->
+        <div class="page d-flex flex-row flex-column-fluid">
+            <!--begin::Wrapper-->
+            <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+                <!--begin::Header-->
+                <!-- <app-header></app-header> -->
+                <!--end::Header-->
+                <!--begin::Toolbar-->
+                <div class="toolbar py-5 py-lg-5" id="kt_toolbar">
+                    <!--begin::Container-->
+                    <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
+                        <!--begin::Page title-->
+                        <div class="page-title d-flex flex-column me-3">
+                            <!--begin::Title-->
+                            <h1 class="d-flex text-dark fw-bold my-1 fs-3">Survey List</h1>
+                            <!--end::Title-->
+                            <!--begin::Breadcrumb-->
+                            <ul class="breadcrumb breadcrumb-dot fw-semibold text-gray-600 fs-7 my-1">
+                                <!--begin::Item-->
+                                <li class="breadcrumb-item text-gray-600"> <a
+                                        routerLink="/cordinator/CoordinatorDashboard" routerLinkActive="active">Home</a>
+                                </li>
+                                <!--end::Item-->
+                                <!--begin::Item-->
+                                <li class="breadcrumb-item text-gray-600"> <a routerLink="/cordinator/SurveyManagement"
+                                        routerLinkActive="active">Survey List</a></li>
+                                <!--end::Item-->
+                                <!--begin::Item-->
+                                <li class="breadcrumb-item text-gray-500">Survey Answer </li>
+                                <!--end::Item-->
+                            </ul>
+                            <!--end::Breadcrumb-->
+                        </div>
+                        <div class="row">
+                            <!-- <div class="col-md-6">
+                                <input type="text" class="form-control" [(ngModel)]="surveyId"
+                                    placeholder="Enter Survey Id" onkeyup="getdetailservey()">
+                            </div> -->
+                            <!-- <div class="col-md-6">
+                                 <input type="text" class="form-control" [(ngModel)]="programId"
+                                    placeholder="Enter Program Id">
+                            </div>
+                            <div class="col-md-6">
+                              <input type="text" class="form-control" [(ngModel)]="EmployeeId"
+                                    placeholder="Enter Employee Id">
+                            </div> -->
+                        </div>
+                        <!--end::Page title-->
+                    </div>
+                    <!--end::Container-->
+                </div>
+                <!--end::Toolbar-->
+                <!--begin::Container-->
+                <div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
+                    <!--begin::Post-->
+                    <div class="content flex-row-fluid" id="kt_content" *ngIf="displayAnwserForm == true">
+                        <!--begin::Documents toolbar-->
+
+                        <!--end::Documents toolbar-->
+                        <form [formGroup]="editRecipientForm" (ngSubmit)="onSubmit()">
+                            <div class="main-setting">
+
+                                <div class="row">
+                                    <div class="col-lg-8" *ngFor="let Survey of SurveyDetils;
+                                    let i='index';">
+                                        <div class="quiz mb-7">
+                                            <h5><span class="me-2 mb-4">Ques {{i+1}}.</span>{{Survey.question}}
+                                            </h5>
+                                            <div class="row mt-4">
+                                                <!-- <div *ngFor="let option of optionValue().controls; let QuesIndex = index; let quesFirst = first; let quesLast = last;">
+                                                    <div [formGroupName]="QuesIndex"> -->
+                                                <div class="field-checkbox"
+                                                    *ngFor="let questionOptions of Survey.optionValue let option = index"
+                                                    class="col-lg-6 mb-4 d-flex">
+                                                    <span>{{optionListAtoZ[option]}}.&nbsp;&nbsp;</span>
+                                                    <p-checkbox *ngIf="questionOptions.inputvaluetypeId == '102'"
+                                                        name="optionName" (onChange)="getCheckedValue(questionOptions)"
+                                                        value="questionOptions.optionName"
+                                                        [value]="questionOptions.optionName"
+                                                        [inputId]="questionOptions.key"></p-checkbox>
+
+                                                    <label *ngIf="questionOptions.inputvaluetypeId == '102'"
+                                                        class="col-lg-11 mb-1 mr-2"
+                                                        [for]="questionOptions.key">{{questionOptions.optionName}}</label>
+
+                                                    <p-radioButton *ngIf="questionOptions.inputvaluetypeId == '101'"
+                                                        [inputId]="questionOptions.Id"
+                                                        (onClick)="getCheckedValue(questionOptions)"
+                                                        name="questionOptions{{ i }}" [value]="questionOptions"
+                                                        [(ngModel)]="selectedOptions[i]"
+                                                        [ngModelOptions]="{standalone: true}"></p-radioButton>
+                                                    <label *ngIf="questionOptions.inputvaluetypeId == '101'"
+                                                        [for]="questionOptions.Id">{{questionOptions.optionName}}</label>
+                                                    <div class="w-300 w-md-400px top-tittle-bx"
+                                                        *ngIf="questionOptions.inputvaluetypeId == '104'">
+                                                        <label
+                                                            class="form-check form-check-custom form-check-inline form-check-solid me-5 d-flex">
+                                                            <input type="text" [(ngModel)]="selectedTextInputs[option]"
+                                                                class="form-control" placeholder="Enter Your Answer"
+                                                                [ngModelOptions]="{ standalone: true }"
+                                                                (change)="getCheckedValue(questionOptions)">
+                                                            {{ questionOptions.optionName }}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <!-- </div>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <button type="submit" id="kt_ecommerce_add_category_submit"
+                                            class="btn btn-primary">
+                                            <span class="indicator-label"> Submit </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <!--end::Post-->
+        </div>
+    </div>
+    <div class="modal-dialog modal-dialog-centered" *ngIf="displayAnwserForm == false">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="swal2-icon swal2-error swal2-icon-show" style="display: flex;">
+                    <span class="swal2-x-mark">
+                        <span class="swal2-x-mark-line-left"></span>
+                        <span class="swal2-x-mark-line-right"></span>
+                    </span>
+                </div>
+                <div class="swal2-html-container">
+                    <h5>The link you have followed has expired. Please contact to business owner</h5>
+                </div>
+                <div class="text-center">
+                    <!-- <button type="button" class="btn btn-light mt-4" (click)="display = false">Cancel</button> -->
+                    <!-- <button style="margin-left: 4px;" type="button" class="btn btn-primary mt-4"
+                  (click)="deleteProgram()">Confirm</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="vh-100 d-flex justify-content-center align-items-center" *ngIf="thankyou>0">
+    <div class="card col-md-4 bg-white shadow-md p-5">
+        <div class="mb-4 text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-success" width="75" height="75" fill="currentColor"
+                class="bi bi-check-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path
+                    d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+            </svg>
+        </div>
+        <div class="text-center">
+            <h1>Thank You !</h1>
+            <p>Your Form submission has been send </p>
+            <!-- <button class="btn btn-outline-success">Back Home</button> -->
+        </div>
+
+    </div>

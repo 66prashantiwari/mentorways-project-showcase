@@ -1,0 +1,118 @@
+
+.forum-post-top {
+    display: flex;
+}
+.forum-post-top .author-avatar img {
+    border-radius: 50%;
+    margin-right: 15px;
+    width: 50px;
+}
+.forum-post-top .forum-post-author .author-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1d2746;
+}
+.forum-post-top .forum-post-author .forum-author-meta {
+    display: flex;
+}
+.forum-post-top .forum-post-author .forum-author-meta .author-badge:first-child {
+    margin-right: 20px;
+}
+.forum-post-top .forum-post-author .forum-author-meta span, .forum-post-top .forum-post-author .forum-author-meta a {
+    color: #959494;
+    font-size: 11px;
+    
+}
+.forum-author-meta svg{
+    fill: #959494;
+    width: 11px;
+    margin-right: 5px;
+}
+.action-button-container .ask-btn {
+    box-shadow: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 28px;
+    margin-top: 2px;
+}
+.action_btn {
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    box-shadow: 0 20px 30px 0 rgba(17, 166, 131, 0.24);
+    border-radius: 4px;
+    background: var(--brand_color);
+    display: inline-block;
+    padding: 14px 28px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.18s ease-in-out;
+}
+.q-title {
+        display: flex;
+    padding: 15px 15px 1px 0;
+    align-items: center;
+}
+.question-icon {
+    font-size: 42px;
+    color: #1d2746;
+    margin-right: 12px;
+    font-weight: 600;
+}
+.q-title h1 {
+    font-size: 20px;
+    color: #1d2746;
+    line-height: 1.4;
+    margin-bottom: 0px;
+}
+.forum-post-content {
+        padding-left: 50px;
+    text-align: justify;
+}
+.forum-post-content .content p {
+    font-size: 12px;
+    margin-bottom: 9px;
+}
+
+
+
+
+.all-answers {
+    margin-top: 30px;
+}
+.all-answers .title {
+       font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 7px;
+    color: #686868;
+}
+.all-answers .filter-bar {
+    background: #f7f8f9;
+    border: 1px solid #eaeeef;
+    padding: 6px 11px;
+    justify-content: space-between;
+    border-radius: 6px;
+    align-items: center;
+}
+.all-answers .forum-comment {
+    margin-top: 30px;
+}
+
+.all-answers .forum-comment .comment-content {
+        margin-left: 65px;
+    margin-top: 3px;
+    border-bottom: 1px solid #e8ecee;
+    padding-bottom: 14px;
+}
+.all-answers .forum-comment .comment-content p {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #8b8686;
+}
+.all-answers .forum-comment .comment-content .action-btns {
+    margin-top: 9px;
+   
+    transition: all 5s ease-in;
+}
+.pagination-wrapper .page-link {
+    padding: 0.225rem 0.65rem;
+}
+   

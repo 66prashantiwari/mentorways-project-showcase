@@ -1,0 +1,96 @@
+.invalidField-message {
+  color: red;
+}
+
+.list-unstyled .active {
+  background-color: black;
+}
+
+
+
+.create-btn {
+  border: none;
+  margin-left: 87%;
+  width: 70px;
+  margin-top: -8px;
+  margin-bottom: 18px;
+  border-radius: 5px;
+  padding: 2px 0px;
+  background-color: #1abaff;
+  cursor:pointer;
+}
+
+ul.list-unstyled.app-slots li {
+  width: 155px;
+  font-size: 12px;
+}
+
+ul.list-unstyled.app-slots li span {
+  font-size: 12px;
+}
+
+
+h2 {
+  font-size: 12px;
+  margin-top: 4px;
+  color: white;
+}
+
+.appoint-btn {
+  width: 180px;
+}
+
+.appoint-btn li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.appoint-btn a.confirm-time {
+  // .appoint-btn a.selected {
+  border: 1px solid #686767;
+  padding: 2px 6px;
+  font-size: 11px;
+  border-radius: 5px;
+  cursor: auto;
+  color: #565454;
+}
+
+.appoint-btn.btn.btn-light-dark:hover:not(.btn-active) {
+  background-color: #eeeeee !important;
+  color: #4a4a4a;
+}
+
+.appoint-btn.btn.btn-light-dark:focus {
+  background-color: #eeeeee !important;
+  color: #4a4a4a;
+}
+
+.appoint-btn a.confirm-time:hover {
+  color: #565454;
+}
+
+.list-unstyled .active {
+  background-color: #4caf50;
+    color: #fff;
+    border-radius: 7px;
+}
+
+
+.fa-trash {
+  color: #e74c3c;
+  border: none;
+  background-color: #ffffff00;
+}
+ul.app-slots.open-slots {
+  padding-left: 20px;
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
+ul.app-slots.open-slots li {
+  text-align: center;
+  background: #efefef;
+  border-radius: 6px;
+  width: 114px;
+}

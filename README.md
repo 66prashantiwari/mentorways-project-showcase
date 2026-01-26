@@ -1,27 +1,110 @@
-# MentorshipShowcase
+# MentorwaysProjectShowcase
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.6.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To start a local development server, run:
+
+```bash
+ng serve
+```
+
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-## Build
+```bash
+ng generate component component-name
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-## Running unit tests
+```bash
+ng generate --help
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Building
 
-## Running end-to-end tests
+To build the project run:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+ng build
+```
 
-## Further help
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# MentorWays – Mentorship & Learning Platform (Live Product)
+
+📌 **Project Type:** Production SaaS (Company Product)
+
+---
+
+## 🧠 Overview
+MentorWays is a mentorship and learning platform designed to connect learners with
+industry mentors through structured programs, bookings, and role-based dashboards.
+
+The platform supports mentor onboarding, learner enrollment, scheduling, and
+program management with a scalable frontend architecture.
+
+---
+
+## 👨‍💻 My Role
+**Senior Frontend Developer**  
+(Worked on live production features end-to-end)
+
+---
+
+## 🛠️ Key Responsibilities
+- Built scalable and reusable UI components
+- Developed complex multi-step forms with validation
+- Implemented role-based dashboards (Mentor / Learner / Admin)
+- Integrated REST APIs with authentication & authorization
+- Improved UX, performance, and accessibility
+- Collaborated with backend, design, and product teams
+
+---
+
+## ⚙️ Tech Stack
+- Angular / React (based on module)
+- TypeScript
+- RxJS / Redux / Context API
+- SCSS / Tailwind / Material UI
+- REST APIs
+- Git & Agile workflow
+
+---
+
+## ✨ Features I Contributed To
+- Mentor onboarding & profile management
+- Booking & scheduling flows
+- Program enrollment UI
+- Form validation & error handling
+- Dashboard performance optimization
+
+---
+
+## 📸 Screenshots
+//Mentor ways..
+![alt text](Coordinator_dashboard.png)// For coordinate dasboard.
+
+![alt text](Survey_create1.png) // For complex surevey create
+
+![alt text](Survey_create.png) // add proper survey
+
+
+//AnOther Project Practice crown 
+-> use Angular 16 NgRx, Rxjs, Typescript.
+
+![alt text](Practice-crown.png) // 
+Live URL: https://practicecrown.com/
+
+## 🛠️ Key Responsibilities of Practice-crown
+- Built scalable and reusable UI components
+- Developed complex multi-step forms with validation
+- Implemented role-based dashboards (Mentor / Learner / Admin)
+- Integrated REST APIs with authentication & authorization
+- Improved UX, performance, and accessibility
+- Collaborated with backend, design, and product teams

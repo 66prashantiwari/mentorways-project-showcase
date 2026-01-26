@@ -1,0 +1,452 @@
+<div class="some">
+  <div id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled program">
+    <!--begin::Theme mode setup on page load-->
+    <!--end::Theme mode setup on page load-->
+    <!--begin::Main-->
+    <!--begin::Root-->
+    <div class="d-flex flex-column flex-root">
+      <!--begin::Page-->
+      <div class="page d-flex flex-row flex-column-fluid">
+        <!--begin::Wrapper-->
+        <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+          <!--begin::Header-->
+          <!--end::Header-->
+          <!--begin::Toolbar-->
+          <div class="toolbar py-2" id="kt_toolbar">
+            <!--begin::Container-->
+            <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
+              <!--begin::Page title-->
+              <div class="page-title d-flex flex-column me-3">
+                <!--begin::Title-->
+                <h1 class="d-flex text-gray my-1 fs-5">Add Participant</h1>
+                <!--end::Title-->
+                <!--begin::Breadcrumb-->
+                <ul class="breadcrumb breadcrumb-dot fw-light text-gray-400 fs-8">
+                  <!--begin::Item-->
+                  <!-- <li class="breadcrumb-item text-gray-600">
+                  <a href="../../demo11/dist/index.html" class="text-gray-600 text-hover-primary">Home</a>
+                </li> -->
+                  <!--end::Item-->
+                  <!--begin::Item-->
+                  <li class="breadcrumb-item text-gray-600" *ngIf="userDetails?.roleId == '101' "><a
+                      routerLink="/cordinator/CoordinatorDashboard" routerLinkActive="active">Home</a>
+                  </li>
+                  <li class="breadcrumb-item text-gray-600" *ngIf="userDetails?.roleId == '102' "><a
+                      routerLink="/mentor/MentorDashboard" routerLinkActive="active">Home</a>
+                  </li>
+                  <li class="breadcrumb-item text-gray-600" *ngIf="userDetails?.roleId == '103' "><a
+                      routerLink="/mentee/menteeDashboard" routerLinkActive="active">Home</a>
+                  </li>
+                  <!--end::Item-->
+                  <!--begin::Item-->
+                  <li class="breadcrumb-item text-gray-500"><a routerLink="/cordinator/program"
+                      routerLinkActive="active">Program</a></li>
+                  <li class="breadcrumb-item text-gray-500"><a
+                      routerLink="/cordinator/ProgramDetail/{{programDetails?.Id}}" routerLinkActive="active">Program
+                      Detail</a>
+                  </li>
+                  <li class="breadcrumb-item text-gray-500"><a>Add Participant</a>
+                  </li>
+                  <!--end::Item-->
+                </ul>
+                <!--end::Breadcrumb-->
+              </div>
+              <!--end::Page title-->
+              <!--begin::Actions-->
+              <div class="d-flex align-items-center ">
+                <!--begin::Wrapper-->
+
+                <a class="btn btn-gray btn-sm fs-9" routerLink="/cordinator/ProgramDetail/{{programDetails?.Id}}"
+                  routerLinkActive="active"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="svg replaced-svg ">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+                  Go Back</a>
+              </div>
+              <!--end::Actions-->
+            </div>
+            <!--end::Container-->
+          </div>
+          <!--end::Toolbar-->
+          <!--begin::Container-->
+          <div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
+            <!--begin::Post-->
+            <div class="content flex-row-fluid" id="kt_content">
+              <!--begin::Documents toolbar-->
+              <div class="d-flex flex-wrap flex-stack ">
+                <!--begin::Title-->
+                <h3 class="fw-semibold my-2 fs-6">Participant List
+
+                </h3>
+                <!--end::Title-->
+                <!--begin::Controls-->
+                <div class="d-flex mb-2">
+                  <!--begin::Search-->
+                  <div class="d-flex align-items-center position-relative me-4">
+                    <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+                    <span class="svg-icon svg-icon-3 position-absolute ms-3">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1"
+                          transform="rotate(45 17.0365 15.1223)" fill="currentColor"></rect>
+                        <path
+                          d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
+                          fill="currentColor"></path>
+                      </svg>
+                    </span>
+                    <!--end::Svg Icon-->
+                    <input type="text" id="kt_filter_search"
+                      class="form-control form-control-sm form-control-solid w-250px ps-10" placeholder="Search"
+                      (keyup)="searchMentorMentee($event)">
+                  </div>
+                  <!--end::Search-->
+                  <!--begin create btn-->
+                  <a class="btn btn-sm btn-primary fs-8 align-self-center" data-bs-toggle="modal"
+                    data-bs-target="#AddParticipant">Add</a>
+                </div>
+                <!--end::Controls-->
+              </div>
+              <!--end::Documents toolbar-->
+              <!--begin::Row-->
+              <div class="row g-6 g-xl-9">
+                <div class="card card-flush">
+                  <!--begin::Card header-->
+                  <div class="card-body">
+                    <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-3x border-0 fs-7 fw-semibold mb-3"
+                      id="pills-tab" role="tablist">
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link text-active-primary active " id="pills-mentor-tab" data-bs-toggle="pill"
+                          data-bs-target="#pills-mentor" type="button" role="tab" aria-controls="pills-mentor"
+                          aria-selected="false" tabindex="-1">Mentor</a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link text-active-primary " id="pills-mentee-tab" data-bs-toggle="pill"
+                          data-bs-target="#pills-mentee" type="button" role="tab" aria-controls="pills-mentee"
+                          aria-selected="true">Mentee</a>
+                      </li>
+                      <!-- <li class="nav-item" role="presentation">
+                             <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+                             </li> -->
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                      <div class="tab-pane fade active show" id="pills-mentor" role="tabpanel"
+                        aria-labelledby="pills-mentor-tab">
+                        <!--begin::Table container-->
+                        <div class="table-responsive">
+                          <!--begin::Table-->
+                          <p-table [value]="mentorDuplicateList" [paginator]="true" [rows]="10" id="kt_widget_table_3"
+                            class="table table-hover table-striped align-middle fs-6 gy-4 my-0 pb-3"
+                            data-kt-table-widget-3="all">
+                            <ng-template pTemplate="header">
+
+                              <tr class="text-start text-muted fw-semibold fs-8 text-uppercase gs-0">
+                                <th class="min-w-125px ">Name</th>
+                                <th class="min-w-125px ">Email</th>
+                                <th class="text-end ">Action</th>
+                                <!-- <th>Program</th>
+                                    <th>Status</th>
+                                    <th>Short Description</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th class="text-end">Action</th> -->
+                              </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-mentor>
+                              <tr>
+                                <td><a class="text-gray-800 text-hover-primary">{{mentor.firstName}}
+                                    {{mentor.lastName}}</a></td>
+                                <td>{{mentor.email}}</td>
+                                <td class="text-end">
+
+                                  <a class="btn btn-light-danger btn-sm btn-icon me-2"
+                                    (click)="delete(mentor.employeeId)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                      class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                      <path
+                                        d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z">
+                                      </path>
+                                    </svg>
+                                  </a>
+
+                                </td>
+
+                              </tr>
+
+                            </ng-template>
+                            <!--end::Table-->
+                          </p-table>
+
+                          <!--end::Table-->
+                        </div>
+                        <!--end::Table container-->
+                      </div>
+                      <div class="tab-pane fade " id="pills-mentee" role="tabpanel"
+                        aria-labelledby="pills-responed-tab">
+                        <!--begin::Table container-->
+                        <div class="table-responsive">
+                          <!--begin::Table-->
+                          <p-table [value]="menteeDuplicateList" [paginator]="true" [rows]="10" id="kt_widget_table_3"
+                            class="table table-row-dashed align-middle fs-6 gy-4 my-0 pb-3"
+                            data-kt-table-widget-3="all">
+                            <ng-template pTemplate="header">
+
+                              <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                <th class="min-w-125px ">Name</th>
+                                <th class="min-w-125px ">Email</th>
+                                <th class="text-end ">Action</th>
+                              </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-mentee>
+                              <tr>
+                                <td><a class="text-gray-800 text-hover-primary">{{mentee.firstName}}
+                                    {{mentee.lastName}}</a></td>
+                                <td>{{mentee.email}}</td>
+                                <td class="text-end">
+
+                                  <a class="btn btn-light-danger btn-sm btn-icon me-2"
+                                    (click)="delete(mentee.employeeId)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                      class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                      <path
+                                        d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z">
+                                      </path>
+                                    </svg>
+                                  </a>
+
+                                </td>
+
+                              </tr>
+
+                            </ng-template>
+                            <!--end::Table-->
+                          </p-table>
+
+                          <!--end::Table-->
+                        </div>
+                        <!--end::Table container-->
+                      </div>
+                      <div class="tab-pane fade " id="pills-mentee" role="tabpanel"
+                        aria-labelledby="pills-responed-tab">
+                        <!--begin::Table container-->
+                        <div class="table-responsive">
+                          <!--begin::Table-->
+                          <p-table [value]="menteeDuplicateList" [paginator]="true" [rows]="10" id="kt_widget_table_3"
+                            class="table table-row-dashed align-middle fs-6 gy-4 my-0 pb-3"
+                            data-kt-table-widget-3="all">
+                            <ng-template pTemplate="header">
+
+                              <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                <th class="min-w-125px ">Name</th>
+                                <th class="min-w-125px ">Email</th>
+                                <th class="text-end ">Action</th>
+                              </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-mentee>
+                              <tr>
+                                <td><a class="text-gray-800 text-hover-primary">{{mentee.firstName}}
+                                    {{mentee.lastName}}</a></td>
+                                <td>{{mentee.email}}</td>
+                                <td class="text-end">
+
+                                  <a class="btn btn-light-danger btn-sm btn-icon me-2"
+                                    (click)="delete(mentee.employeeId)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                      class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                      <path
+                                        d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z">
+                                      </path>
+                                    </svg>
+                                  </a>
+
+                                </td>
+
+                              </tr>
+
+                            </ng-template>
+                            <!--end::Table-->
+                          </p-table>
+
+
+                          <!--end::Table-->
+                        </div>
+                        <!--end::Table container-->
+                      </div>
+                      <!--  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div> -->
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <!--end::Container-->
+
+          </div>
+          <!-- Button trigger modal -->
+
+          <div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+            <!--begin::Container-->
+            <app-footer></app-footer>
+            <!--end::Container-->
+          </div>
+          <!--end::Wrapper-->
+        </div>
+        <!--end::Page-->
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+
+
+
+
+
+  <!--begin::Modal dialog-->
+
+</div>
+
+
+
+
+<!--begin::Modal - Upload File-->
+<div class="modal fade" id="AddParticipant" tabindex="-1" aria-hidden="true" >
+  <!--begin::Modal dialog-->
+  <div class="modal-dialog modal-dialog-centered mw-650px">
+    <!--begin::Modal content-->
+    <div class="modal-content">
+      <!--begin::Form-->
+      <div class="form" action="none" id="kt_modal_upload_form">
+        <!--begin::Modal header-->
+        <div class="modal-header">
+          <!--begin::Modal title-->
+          <h4 class="fw-bold">Manage Participant</h4>
+          <!--end::Modal title-->
+          <!--begin::Close-->
+          <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal" (click)="closePopup()">
+            <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+            <span class="svg-icon svg-icon-1">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)"
+                  fill="currentColor" />
+                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)"
+                  fill="currentColor" />
+              </svg>
+            </span>
+            <!--end::Svg Icon-->
+          </div>
+          <!--end::Close-->
+        </div>
+        <!--end::Modal header-->
+        <!--begin::Modal body-->
+        <form [formGroup]="createParticipantsForm">
+          <div class="modal-body pt-10 pb-15 px-lg-17">
+            <div class="row mb-5">
+              <div class="col-lg-2">
+
+                <p-radioButton [value]="102" [ngModelOptions]="{ standalone: true }" [(ngModel)]="selectedMentor"
+                  inputId="Mentor"></p-radioButton>
+                <label for="Mentor" class="ml-2">Mentor</label>
+
+              </div>
+              <div class="col-lg-3">
+                <div class="form-check form-check-custom form-check-solid form-check-sm">
+                  <p-radioButton name="Mentee" value="103" [(ngModel)]="selectedMentor"
+                    [ngModelOptions]="{ standalone: true }"></p-radioButton>
+                  <label for="Mentee" class="ml-2">Mentee</label>
+                </div>
+              </div>
+
+              <p class="invalidField-message" *ngIf="isSelectedMentor">Please select any one option.</p>
+            </div>
+            <div class="form-group">
+              <div class="dropzone dropzone-queue mb-2" id="kt_modal_upload_dropzone">
+                <div class="mb-10 fv-row fv-plugins-icon-container position-relative">
+                  <span class="p-fluid">
+
+                    <p-multiSelect [options]="userList" [showToggleAll]="true" 
+                    formControlName="selectedUser"
+                    (onClick)="getSelectedUserId($event)" 
+                    optionLabel="email" optionValue="id" [virtualScroll]="true"
+                     [filter]="true" [virtualScrollItemSize]="43" 
+                     class="multiselect-custom-virtual-scroll">
+                      <ng-template let-option pTemplate="item">
+                          <div >
+                              
+                              <p> <strong>{{option.email}}</strong> <br> <small>{{option.firstName}}  {{option.lastName}}</small> </p>
+                          </div>
+                      </ng-template>
+                  </p-multiSelect>
+                    <!-- <p-autoComplete [suggestions]="userList" (completeMethod)="searchUser($event)" field="username"
+                      formControlName="selectedUser" placeholder="Search..." [minLength]="2"
+                      class="auto-complete-search-input input-mask" [style]="{ width: '100%' }"
+                      (onSelect)="addUser($event)">
+                    </p-autoComplete> -->
+
+                  </span>
+
+                  <p class="invalidField-message"
+                    *ngIf="createParticipantsForm.controls['selectedUser'].hasError('required') && isInvalidForm">
+                    Please select any user.</p>
+                </div>
+                <div class="" *ngFor="
+                            let user of displayedUser;
+                            let i = index
+                          ">
+                  <span class="badge badge-light-dark me-2">{{ user.username }}
+                    <svg (click)="close(i); userid = user.userId" xmlns="http://www.w3.org/2000/svg" width="12"
+                      height="12" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16" cursor="pointer">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                      <path
+                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg></span>
+
+                </div>
+              </div>
+
+            </div>
+            <div class="d-flex justify-content-end">
+
+              <a id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5" (click)="closePopup()">Cancel</a>
+              <button type="submit" id="kt_ecommerce_add_category_submit" class="btn btn-primary"
+                (click)="addParticipants()">
+                <span class="indicator-label">Save </span>
+                <span class="indicator-progress">Please wait...
+                  <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+              </button>
+              <!--end::Button-->
+            </div>
+            <!--end::Input group-->
+          </div>
+        </form>
+
+        <!--end::Modal body-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--end::Modal - Upload File-->
+
+
+<p-dialog [(visible)]="deletePopup" [modal]="true" class="text-center">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="swal2-icon swal2-error swal2-icon-show" style="display: flex;">
+          <span class="swal2-x-mark">
+            <span class="swal2-x-mark-line-left"></span>
+            <span class="swal2-x-mark-line-right"></span>
+          </span>
+        </div>
+        <div class="swal2-html-container">Are you sure you want to delete this ?
+        </div>
+        <div class="text-center">
+          <button type="button" class="btn btn-light mt-4" (click)="deletePopup = false">Cancel</button>
+          <button style="margin-left: 4px;" type="button" class="btn btn-primary mt-4"
+            (click)="deleteUser()">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-dialog>

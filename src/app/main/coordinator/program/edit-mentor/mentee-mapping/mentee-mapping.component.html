@@ -1,0 +1,214 @@
+<app-loader [show]="loader"></app-loader>
+<div id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
+  <div class="d-flex flex-column flex-root">
+    <!--begin::Page-->
+    <div class="page d-flex flex-row flex-column-fluid">
+      <!--begin::Wrapper-->
+      <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+        <!--begin::Toolbar-->
+        <div class="toolbar py-2" id="kt_toolbar">
+          <!--begin::Container-->
+          <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
+            <!--begin::Page title-->
+            <div class="page-title d-flex flex-column me-3">
+              <!--begin::Title-->
+              <h1 class="d-flex text-gray my-1 fs-5">
+                Mentor Mentee Mapping
+              </h1>
+              <!--end::Title-->
+              <!--begin::Breadcrumb-->
+              <ul class="breadcrumb breadcrumb-dot fw-light text-gray-400 fs-8">
+                <!--begin::Item-->
+                <li class="breadcrumb-item text-gray-600">
+                  <a routerLink="/mentor/MentorDashboard" class="text-gray-600 text-hover-primary">Home</a>
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <li *ngIf="loginDetails?.roleId == '101' " class="breadcrumb-item text-gray-500"><a href=""
+                    routerLink="/cordinator/program" routerLinkActive="active">Program</a>
+                </li>
+                <li *ngIf="loginDetails?.roleId == '102' " class="breadcrumb-item text-gray-500"><a href=""
+                    routerLink="/mentor/mentorProgram" routerLinkActive="active">Program</a>
+                </li>
+                <li *ngIf="loginDetails?.roleId == '103' " class="breadcrumb-item text-gray-500"><a href=""
+                    routerLink="/mentee/MenteeProgram" routerLinkActive="active">Program</a>
+                </li>
+                <li *ngIf="loginDetails?.roleId == '101' " class="breadcrumb-item text-gray-600"><a
+                    routerLink="/cordinator/ProgramDetail/{{id}}" routerLinkActive="active">Program Details</a></li>
+                <li *ngIf="loginDetails?.roleId == '102'" class="breadcrumb-item text-gray-600"><a
+                    routerLink="/mentor/program-details/{{id}}" routerLinkActive="active">Program Details</a></li>
+                <li *ngIf="loginDetails?.roleId == '103' " class="breadcrumb-item text-gray-600"><a
+                    routerLink="/mentee/ProgramDetail/{{id}}" routerLinkActive="active">Program Details</a></li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <li class="breadcrumb-item text-gray-500">
+                  Mentor Mentee Mapping
+                </li>
+                <!--end::Item-->
+              </ul>
+              <!--end::Breadcrumb-->
+            </div>
+            <div class="" *ngIf="loginDetails?.roleId == '101' ">
+              <a routerLink="/cordinator/ProgramDetail/{{id}}" routerLinkActive="active"
+                class="btn btn-gray btn-sm fs-9"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="svg replaced-svg ">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Go Back</a>
+            </div>
+            <div class="" *ngIf="loginDetails?.roleId == '102' ">
+              <a routerLink="/mentor/program-details/{{id}}" routerLinkActive="active"
+                class="btn btn-gray btn-sm fs-9"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="svg replaced-svg ">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Go Back</a>
+            </div>
+            <div class="" *ngIf="loginDetails?.roleId == '103' ">
+              <a routerLink="/mentee/ProgramDetail/{{id}}" routerLinkActive="active"
+                class="btn btn-gray btn-sm fs-9"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="svg replaced-svg ">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Go Back</a>
+            </div>
+            <!--end::Page title-->
+          </div>
+          <!--end::Container-->
+        </div>
+        <!--end::Toolbar-->
+        <!--begin::Container-->
+        <div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
+          <!--begin::Post-->
+          <div class="content flex-row-fluid" id="kt_content">
+            <form id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row"
+              data-kt-redirect="../../demo11/dist/apps/ecommerce/catalog/categories.html">
+              <!--begin::Aside column-->
+              <div class="d-flex flex-column gap-7 gap-lg-10 w-300 w-lg-300px mb-7 me-lg-10">
+                <!--begin::Thumbnail settings-->
+                <div class="card card-flush py-4">
+                  <!--begin::Card header-->
+                  <div class="card-header">
+                    <!--begin::Card title-->
+
+                    <!--end::Card title-->
+                  </div>
+                  <!--end::Card header-->
+                  <!--begin::Card body-->
+                  <div class="card-body text-center pt-0">
+                    <!--begin::Image input-->
+                    <img src="assets/media/svg/illustrations/easy/1.svg" alt="image" />
+                    <!--begin::Description-->
+                    <div class="text-muted fs-7">
+                      Manage mentor and mentee mapping with ease.
+                      Click trash icon to remove a mapping OR use dropdown and hit save button to map a unmapped mentee.
+                    </div>
+                    <!--end::Description-->
+                  </div>
+                  <!--end::Card body-->
+                </div>
+                <!--end::Thumbnail settings-->
+              </div>
+              <!--end::Aside column-->
+              <!--begin::Main column-->
+              <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+                <!--begin::General options-->
+                <div class="card card-flush">
+                  <!--begin::Card header-->
+                  <div class="card-header">
+                    <div class="card-title">
+                      <h3 class="fw-semibold fs-5">Mentor Mentee Mapping</h3>
+                    </div>
+                  </div>
+                  <!--end::Card header-->
+                  <!--begin::Card body-->
+                  <div class="card-body pt-0">
+
+                    <div>
+
+                      <p-table [value]="mentormenteeList" [tableStyle]="{ 'min-width': '50rem' }"
+                        class="mapping-table-bx">
+                        <ng-template pTemplate="header">
+                          <tr>
+                            <th>Mentor Name</th>
+                            <th>Mentee Name</th>
+                            <th>Action</th>
+                          </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-mentormentee>
+                          <tr>
+                            <td *ngIf="mentormentee.editmentormentee==false">{{ mentormentee?.mentorName }} {{
+                              mentormentee?.mentorLastname }}</td>
+                            <td *ngIf="mentormentee.editmentormentee==true">
+                              <p-dropdown [(ngModel)]="selectedMentor" [options]="mentorList"
+                                [ngModelOptions]="{ standalone: true }" optionLabel="label"></p-dropdown>
+                            </td>
+
+                            <td>{{ mentormentee?.menteeName }} {{ mentormentee?.menteeLastname }}</td>
+                            <td>
+                              <div class="d-flex flex-wrap align-items-start">
+                                <button class=" btn btn-light-primary btn-sm btn-icon"
+                                  (click)="editMetorMentee(mentormentee)"
+                                  *ngIf="mentormentee.editmentormentee==false;"><i class="fa fa-pencil"></i></button>
+                                <div>
+                                  <!-- <p-multiSelect *ngIf="mentormentee.editmentormentee==true" [options]="unmappedMenteeList"
+                                [(ngModel)]="selectedEmployee" [ngModelOptions]="{ standalone: true }"
+                                optionLabel="name" emptyMessage="No unmapped mentee." class="mt-1 mapping-bx"></p-multiSelect> -->
+
+                                  <p class="error mb-0" *ngIf="mentormentee.isInvalidEmployee">Please select any mentor.
+                                  </p>
+                                </div>
+
+                                <button type="button" *ngIf="mentormentee.editmentormentee==true"
+                                  (click)="updateMentorMapping(mentormentee)"
+                                  class=" btn btn-light-success btn-sm ms-2 ">Save</button>
+                              </div>
+                            </td>
+
+                          </tr>
+                        </ng-template>
+                      </p-table>
+                    </div>
+
+
+
+
+                  </div>
+                  <!--end::Card header-->
+                </div>
+                <!--end::General options-->
+                <!-- <div class="d-flex justify-content-end">
+                              <a href="../../demo11/dist/apps/ecommerce/catalog/products.html" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
+                              
+                              <button type="submit" id="kt_ecommerce_add_category_submit" class="btn btn-primary">
+                              <span class="indicator-label" (click)="updateMentorList()">Save Changes</span>
+                              <span class="indicator-progress">Please wait...
+                              <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                              </button>
+                           </div> -->
+              </div>
+              <!--end::Main column-->
+            </form>
+          </div>
+          <!--end::Post-->
+        </div>
+        <!--end::Container-->
+        <!--begin::Footer-->
+        <div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+          <!--begin::Container-->
+          <app-footer></app-footer>
+          <!--end::Container-->
+        </div>
+        <!--end::Footer-->
+      </div>
+      <!--end::Wrapper-->
+    </div>
+    <!--end::Page-->
+  </div>
+</div>

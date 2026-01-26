@@ -1,0 +1,15 @@
+.fw-bolder img{
+    width: 48%;
+}
+.menu-state-primary .menu-item .menu-link.active .menu-title {
+    color: #00b2ff;
+}
+.menu-state-primary .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-title {
+    color: #00b2ff;
+}
+.dropdown-toggle::after {
+   
+    margin-left: 0.855em;
+    
+    margin-top: 12px;
+}

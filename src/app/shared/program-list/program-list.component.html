@@ -1,0 +1,541 @@
+<app-loader [show]="loader"></app-loader>
+<div class="some">
+  <div id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled program">
+    <!--begin::Theme mode setup on page load-->
+    <!--end::Theme mode setup on page load-->
+    <!--begin::Main-->
+    <!--begin::Root-->
+    <div class="d-flex flex-column flex-root">
+      <!--begin::Page-->
+      <div class="page d-flex flex-row flex-column-fluid">
+        <!--begin::Wrapper-->
+        <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+          <!--begin::Header-->
+          <!--end::Header-->
+          <!--begin::Toolbar-->
+          <div class="toolbar py-2" id="kt_toolbar">
+            <!--begin::Container-->
+            <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
+              <!--begin::Page title-->
+              <div class="page-title d-flex flex-column me-3">
+                <!--begin::Title-->
+                <h1 class="d-flex text-gray my-1 fs-5">Program</h1>
+                <!--end::Title-->
+                <!--begin::Breadcrumb-->
+                <ul class="breadcrumb breadcrumb-dot fw-light text-gray-400 fs-8 ">
+                  <!--begin::Item-->
+                  <!-- <li class="breadcrumb-item text-gray-600">
+                  <a href="../../demo11/dist/index.html" class="text-gray-600 text-hover-primary">Home</a>
+                </li> -->
+                  <!--end::Item-->
+                  <!--begin::Item-->
+                  <li class="breadcrumb-item text-gray-600" *ngIf="userDetails?.roleId == '101' "><a
+                      routerLink="/cordinator/CoordinatorDashboard" routerLinkActive="active">Home</a>
+                  </li>
+                  <li class="breadcrumb-item text-gray-600" *ngIf="userDetails?.roleId == '102' "><a
+                      routerLink="/mentor/MentorDashboard" routerLinkActive="active">Home</a>
+                  </li>
+                  <li class="breadcrumb-item text-gray-600" *ngIf="userDetails?.roleId == '103' "><a
+                      routerLink="/mentee/menteeDashboard" routerLinkActive="active">Home</a>
+                  </li>
+                  <!--end::Item-->
+                  <!--begin::Item-->
+                  <li class="breadcrumb-item text-gray-500"><a>Program</a></li>
+                  <!--end::Item-->
+                </ul>
+                <!--end::Breadcrumb-->
+              </div>
+              <!--end::Page title-->
+              <!--begin::Actions-->
+              <div class="d-flex align-items-center">
+                <!--begin::Wrapper-->
+                <a *ngIf="userDetails?.roleId == '101' " routerLink="/cordinator/CoordinatorDashboard"
+                  routerLinkActive="active" class="btn btn-gray btn-sm fs-9"><svg xmlns="http://www.w3.org/2000/svg"
+                    width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="svg replaced-svg ">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+                  Go Back</a>
+                <a *ngIf="userDetails?.roleId == '102' " routerLink="/mentor/MentorDashboard" routerLinkActive="active"
+                  class="btn btn-gray btn-sm fs-9 "><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="svg replaced-svg ">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+                  Go Back</a>
+                <a *ngIf="userDetails?.roleId == '103' " routerLink="/mentee/menteeDashboard" routerLinkActive="active"
+                  class="btn btn-gray btn-sm fs-9"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="svg replaced-svg ">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+                  Go Back</a>
+              </div>
+              <!--end::Actions-->
+            </div>
+            <!--end::Container-->
+          </div>
+          <!--end::Toolbar-->
+          <!--begin::Container-->
+          <div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
+            <!--begin::Post-->
+            <div class="content flex-row-fluid" id="kt_content">
+              <!--begin::Row-->
+              <div class="row g-2 mb-2" *ngIf="roleId==101">
+                <!--begin::Col-->
+                <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6 ">
+                  <!--begin::Card widget 16-->
+                  <!--begin::Tiles Widget 2-->
+                  <div class="card bgi-no-repeat bgi-size-contain"
+                    style="background-color: #663259; background-position: right; background-image:url('../src/media/svg/misc/taieri.svg')">
+                    <!--begin::Body-->
+                    <div class="card-body d-flex  justify-content-between align-items-center p-3">
+                      <!--begin::Title-->
+                      <!-- <h2 class="text-white fs-7 fw-semibold mb-0">Create Program
+                        On Based Surveys
+                      </h2> -->
+                      <!--end::Title-->
+                      <!--begin::Action-->
+                      <div class="m-0">
+                        <a routerLink="/shared/CreateProgram" class="btn btn-primary btn-sm" *ngIf="roleId==101">Create
+                          A Program</a>
+
+                      </div>
+                      <!--begin::Action-->
+                    </div>
+                    <!--end::Body-->
+                  </div>
+                  <!--end::Tiles Widget 2-->
+                  <!--end::Card widget 16-->
+                </div>
+                <!--end::Col-->
+                <!--begin::Col-->
+                <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                  <!--begin::Card widget 17-->
+                  <div class="row g-2">
+                    <!--begin::Col-->
+                    <div class="col-md-6">
+                      <!--begin::Tiles Widget 5-->
+                      <a class="card card-xxl-stretch bg-primary ">
+                        <!--begin::Body-->
+                        <div class="card-body d-flex  justify-content-between p-3">
+                          <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+                          <span class="svg-icon svg-icon-white svg-icon-2hx  flex-grow-1">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor" />
+                              <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="currentColor" />
+                              <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="currentColor" />
+                              <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="currentColor" />
+                            </svg>
+                          </span>
+                          <!--end::Svg Icon-->
+                          <div class="d-flex flex-column">
+                            <div class="text-white fw-semibold fs-8 mb-0  text-right">{{allMember}}</div>
+                            <div class="text-white fw-normal fs-8 text-right">Members</div>
+                          </div>
+                        </div>
+                        <!--end::Body-->
+                      </a>
+                      <!--end::Tiles Widget 5-->
+                    </div>
+                    <!--end::Col-->
+                    <!--begin::Col-->
+                    <div class="col-md-6">
+                      <!--begin::Tiles Widget 5-->
+                      <a class="card card-xxl-stretch bg-body">
+                        <!--begin::Body-->
+                        <div class="card-body d-flex justify-content-between p-3 bg-light-success">
+                          <!--begin::Svg Icon | path: icons/duotune/general/gen002.svg-->
+                          <span class="svg-icon svg-icon-success svg-icon-2hx  flex-grow-1">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path opacity="0.3"
+                                d="M4.05424 15.1982C8.34524 7.76818 13.5782 3.26318 20.9282 2.01418C21.0729 1.98837 21.2216 1.99789 21.3618 2.04193C21.502 2.08597 21.6294 2.16323 21.7333 2.26712C21.8372 2.37101 21.9144 2.49846 21.9585 2.63863C22.0025 2.7788 22.012 2.92754 21.9862 3.07218C20.7372 10.4222 16.2322 15.6552 8.80224 19.9462L4.05424 15.1982ZM3.81924 17.3372L2.63324 20.4482C2.58427 20.5765 2.5735 20.7163 2.6022 20.8507C2.63091 20.9851 2.69788 21.1082 2.79503 21.2054C2.89218 21.3025 3.01536 21.3695 3.14972 21.3982C3.28408 21.4269 3.42387 21.4161 3.55224 21.3672L6.66524 20.1802L3.81924 17.3372ZM16.5002 5.99818C16.2036 5.99818 15.9136 6.08615 15.6669 6.25097C15.4202 6.41579 15.228 6.65006 15.1144 6.92415C15.0009 7.19824 14.9712 7.49984 15.0291 7.79081C15.0869 8.08178 15.2298 8.34906 15.4396 8.55884C15.6494 8.76862 15.9166 8.91148 16.2076 8.96935C16.4986 9.02723 16.8002 8.99753 17.0743 8.884C17.3484 8.77046 17.5826 8.5782 17.7474 8.33153C17.9123 8.08486 18.0002 7.79485 18.0002 7.49818C18.0002 7.10035 17.8422 6.71882 17.5609 6.43752C17.2796 6.15621 16.8981 5.99818 16.5002 5.99818Z"
+                                fill="currentColor" />
+                              <path
+                                d="M4.05423 15.1982L2.24723 13.3912C2.15505 13.299 2.08547 13.1867 2.04395 13.0632C2.00243 12.9396 1.9901 12.8081 2.00793 12.679C2.02575 12.5498 2.07325 12.4266 2.14669 12.3189C2.22013 12.2112 2.31752 12.1219 2.43123 12.0582L9.15323 8.28918C7.17353 10.3717 5.4607 12.6926 4.05423 15.1982ZM8.80023 19.9442L10.6072 21.7512C10.6994 21.8434 10.8117 21.9129 10.9352 21.9545C11.0588 21.996 11.1903 22.0083 11.3195 21.9905C11.4486 21.9727 11.5718 21.9252 11.6795 21.8517C11.7872 21.7783 11.8765 21.6809 11.9402 21.5672L15.7092 14.8442C13.6269 16.8245 11.3061 18.5377 8.80023 19.9442ZM7.04023 18.1832L12.5832 12.6402C12.7381 12.4759 12.8228 12.2577 12.8195 12.032C12.8161 11.8063 12.725 11.5907 12.5653 11.4311C12.4057 11.2714 12.1901 11.1803 11.9644 11.1769C11.7387 11.1736 11.5205 11.2583 11.3562 11.4132L5.81323 16.9562L7.04023 18.1832Z"
+                                fill="currentColor" />
+                            </svg>
+                          </span>
+                          <!--end::Svg Icon-->
+                          <div class="d-flex flex-column">
+                            <div class="text-dark fw-semibold fs-8 mb-0 text-right">
+                              {{programlistLaunchLength}}</div>
+                            <div class="text-muted fw-normal fs-8 text-right">Appointments</div>
+                          </div>
+                        </div>
+                        <!--end::Body-->
+                      </a>
+                      <!--end::Tiles Widget 5-->
+                    </div>
+                    <!--end::Col-->
+                  </div>
+                  <!--end::Card widget 17-->
+                </div>
+                <!--end::Col-->
+              </div>
+              <!--end::Row-->
+              <!--begin::Row-->
+              <div class="card-header border-0 pb-3 mt-3">
+                <h3 class="card-title align-items-start flex-column">
+                  <span class="card-label fw-semibold fs-4 mb-3">Program List</span>
+                </h3>
+              </div>
+              <div class="row">
+                <!--begin::Col-->
+                <div class="col-xl-12 col-xxl-12">
+                  <!--begin::Table Widget 3-->
+                  <div class="card card-flush h-xl-100">
+                    <div class="card-header py-2">
+                      <!--begin::Tabs-->
+                      <div class="card-title mb-0 gap-4 gap-lg-10 gap-xl-15 nav nav-tabs border-bottom-0"
+                        data-kt-table-widget-3="tabs_nav">
+                        <!--begin::Tab item-->
+                        <div class="fs-6 fw-normal text-muted pb-2 border-primary cursor-pointer"
+                          (click)="getProgramList()">Show All ({{length}})</div>
+                        <!--end::Tab item-->
+                        <!--begin::Tab item-->
+                        <div class="fs-6 fw-normal text-muted pb-2 cursor-pointer" (click)="getPendingList()">Pending
+                          ({{pendingLength}})</div>
+                        <!--end::Tab item-->
+                        <!--begin::Tab item-->
+                        <div class="fs-6 fw-normal text-muted pb-2 cursor-pointer" (click)="getCompletedList()">
+                          Completed
+                          ({{completeLength}})</div>
+                        <!--end::Tab item-->
+                      </div>
+                      <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+
+                        <input type="text" id="kt_filter_search" [(ngModel)]="searchvalue"
+                          (input)="dt1.filterGlobal(searchvalue, 'contains')"
+                          class="form-control form-control-solid w-250px ps-14" placeholder="Search Program" />
+                      </span>
+                      <!--end::Tabs-->
+                    </div>
+                    <!--end::Card header-->
+                    <!--begin::Card body-->
+                    <div class="card-body pt-1">
+                      <div class="table-responsive">
+                        <p-table #dt1 [value]="programDuplicateList" [paginator]="true" [rows]="10"
+                          id="kt_widget_table_3" class="table table-striped table-hover align-middle "
+                          data-kt-table-widget-3="all"
+                          [globalFilterFields]="['name','statusLabel','sort_desc','startDate','endDate']">
+                          <ng-template pTemplate="header">
+
+                            <tr class="text-start text-muted fw-semibold fs-8 text-uppercase gs-0">
+                              <th pSortableColumn="name">Program<p-sortIcon field="name"></p-sortIcon></th>
+                              <th pSortableColumn="statusLabel">Status <p-sortIcon field="name"></p-sortIcon></th>
+                              <th pSortableColumn="sort_desc">Short Description <p-sortIcon field="name"></p-sortIcon>
+                              </th>
+                              <th pSortableColumn="startDate">Start Date<p-sortIcon field="name"></p-sortIcon></th>
+                              <th pSortableColumn="endDate">End Date<p-sortIcon field="name"></p-sortIcon></th>
+                              <th class="text-end ">Actions </th>
+                              <!-- <th>Program</th>
+                              <th>Status</th>
+                              <th>Short Description</th>
+                              <th>Start Date</th>
+                              <th>End Date</th>
+                              <th class="text-end">Action</th> -->
+                            </tr>
+                          </ng-template>
+                          <ng-template pTemplate="body" let-program>
+                            <tr>
+                              <td class="min-w-175px">
+                                <div class="position-relative ps-6 pe-3 py-2">
+                                  <div class="position-absolute start-0 top-0 w-4px h-100 rounded-2 bg-primary"></div>
+                                  <a (click)="gotoListpage(program)"
+                                    class="mb-1 text-dark text-hover-primary fw-bold program-design">{{program?.name}}</a>
+                                  <!-- <div class="fs-7 text-muted fw-bold">Created on 24 Dec 21</div> -->
+                                </div>
+                              </td>
+                              <td class="min-w-125px">
+                                <!-- <span class="badge badge-success badge-light-success">{{program?.statusLabel}}</span> -->
+                                <span class="fw-semibold"
+                                  [ngStyle]="{'color': program?.colorCode}">{{program?.statusLabel}}</span>
+                              </td>
+                              <td class="min-w-125px">
+                                <div class="fs-7 " class="description">
+                                  <span> {{program.sort_desc?.trim()}}</span>
+                                </div>
+                              </td>
+                              <td class="min-w-150px">
+                                <div class=" fs-7 ">{{program?.startDate | date}}</div>
+                              </td>
+                              <td class="min-w-150px">
+                                <div class=" fs-7">{{program?.endDate | date}}</div>
+                              </td>
+                              <td class="text-end">
+                                <a (click)="gotoListpage(program)" class="btn btn-light-success btn-sm btn-icon me-2"
+                                  title="View Program" routerLink="/cordinator/ProgramDetail/{{program?.name}}">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-eye" viewBox="0 0 16 16">
+                                    <path
+                                      d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                    <path
+                                      d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                  </svg>
+                                </a>
+                                <a *ngIf="userDetails.roleId == 101" (click)="editProgram(program)"
+                                  class="btn btn-light-primary btn-sm btn-icon me-2" title="Edit Program">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-pencil" viewBox="0 0 16 16">
+                                    <path
+                                      d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                                  </svg>
+                                </a>
+                                <a *ngIf="userDetails.roleId == 101" (click)="deletelist(program)"
+                                  class="btn btn-light-danger btn-sm btn-icon " data-bs-toggle="modal"
+                                  data-bs-target="#delete" title="Delete Program"
+                                  data-kt-users-table-filter="delete_row">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                    <path
+                                      d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                  </svg>
+                                </a>
+
+                              </td>
+                            </tr>
+
+                          </ng-template>
+                          <!--end::Table-->
+                        </p-table>
+                      </div>
+                      <!--end::Card body-->
+
+
+                    </div>
+                    <p-dialog [(visible)]="display" [modal]="true" class="text-center">
+
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-body">
+                            <div class="swal2-icon swal2-error swal2-icon-show" style="display: flex;">
+                              <span class="swal2-x-mark">
+                                <span class="swal2-x-mark-line-left"></span>
+                                <span class="swal2-x-mark-line-right"></span>
+                              </span>
+                            </div>
+                            <div class="swal2-html-container">Are you sure you want to delete this ?
+                            </div>
+                            <div class="text-center">
+                              <button type="button" class="btn btn-light btn-sm mt-4 me-2"
+                                (click)="display = false">Cancel</button>
+                              <button type="button" class="btn btn-sm btn-primary mt-4"
+                                (click)="deleteProgram()">Confirm</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </p-dialog>
+                    <!--end::Table Widget 3-->
+                  </div>
+                  <!--end::Col-->
+                </div>
+                <!--end::Row-->
+                <!--begin::Row-->
+
+                <!--end::Row-->
+              </div>
+              <!--end::Post-->
+            </div>
+            <!--end::Container-->
+
+          </div>
+          <!-- Button trigger modal -->
+          <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#set-priority">
+            Launch demo modal
+          </button> -->
+
+          <!-- Modal -->
+          <div class="modal fade" id="set-priority" tabindex="-1" aria-labelledby="set-priorityLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Set Priority</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                  <ul class="nav nav-pills mb-3" id="setPriority" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="pills-mentor-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-mentor" type="button" role="tab" aria-controls="pills-mentor"
+                        aria-selected="true">mentor</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="pills-mentee-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-mentee" type="button" role="tab" aria-controls="pills-mentee"
+                        aria-selected="false">mentee</button>
+                    </li>
+
+                  </ul>
+                  <div class="tab-content" id="setPriorityContent">
+                    <div class="tab-pane fade show active" id="pills-mentor" role="tabpanel"
+                      aria-labelledby="pills-mentor-tab">
+                      <!--begin::Title-->
+                      <div class="d-flex justify-content-between align-items-center mt-5 mb-7 border-bottom pb-3">
+                        <!--begin::User-->
+                        <div class="d-flex flex-column">
+                          <!--begin::Name-->
+                          <div class="">
+                            <a href="#" class="text-gray-900 text-hover-primary fs-6 fw-bold me-1"><span
+                                class="text-danger pr-2">Q.</span> Lorem ipsum, dolor sit amet </a>
+
+                          </div>
+                          <!--end::Name-->
+
+                        </div>
+                        <!--end::User-->
+                        <!--begin::Actions-->
+
+                        <div class="col-md-2">
+                          <input type="text" class="form-control py-2" placeholder="">
+                        </div>
+
+
+                      </div>
+                      <!--end::Title-->
+                      <!--begin::Title-->
+                      <div class="d-flex justify-content-between align-items-center mt-5 mb-7 border-bottom pb-3">
+                        <!--begin::User-->
+                        <div class="d-flex flex-column">
+                          <!--begin::Name-->
+                          <div class="">
+                            <a href="#" class="text-gray-900 text-hover-primary fs-6 fw-bold me-1"><span
+                                class="text-danger pr-2">Q.</span> Lorem ipsum, dolor sit amet </a>
+
+                          </div>
+                          <!--end::Name-->
+
+                        </div>
+                        <!--end::User-->
+                        <!--begin::Actions-->
+
+                        <div class="col-md-2">
+                          <input type="text" class="form-control py-2" placeholder="">
+                        </div>
+
+
+                      </div>
+                      <!--end::Title-->
+                      <!--begin::Title-->
+                      <div class="d-flex justify-content-between align-items-center mt-5 mb-7 border-bottom pb-3">
+                        <!--begin::User-->
+                        <div class="d-flex flex-column">
+                          <!--begin::Name-->
+                          <div class="">
+                            <a href="#" class="text-gray-900 text-hover-primary fs-6 fw-bold me-1"><span
+                                class="text-danger pr-2">Q.</span> Lorem ipsum, dolor sit amet </a>
+
+                          </div>
+                          <!--end::Name-->
+
+                        </div>
+                        <!--end::User-->
+                        <!--begin::Actions-->
+
+                        <div class="col-md-2">
+                          <input type="text" class="form-control py-2" placeholder="">
+                        </div>
+
+
+                      </div>
+                      <!--end::Title-->
+                    </div>
+                    <div class="tab-pane fade" id="pills-mentee" role="tabpanel" aria-labelledby="pills-mentee-tab">
+                      <div class="d-flex justify-content-between align-items-center mt-5 mb-7 border-bottom pb-3">
+                        <!--begin::User-->
+                        <div class="d-flex flex-column">
+                          <!--begin::Name-->
+                          <div class="">
+                            <a href="#" class="text-gray-900 text-hover-primary fs-6 fw-bold me-1"><span
+                                class="text-danger pr-2">Q.</span> Lorem ipsum, dolor sit amet </a>
+
+                          </div>
+                          <!--end::Name-->
+
+                        </div>
+                        <!--end::User-->
+                        <!--begin::Actions-->
+
+                        <div class="col-md-2">
+                          <input type="text" class="form-control py-2" placeholder="">
+                        </div>
+
+
+                      </div>
+                      <!--end::Title-->
+                      <!--begin::Title-->
+                      <div class="d-flex justify-content-between align-items-center mt-5 mb-7 border-bottom pb-3">
+                        <!--begin::User-->
+                        <div class="d-flex flex-column">
+                          <!--begin::Name-->
+                          <div class="">
+                            <a href="#" class="text-gray-900 text-hover-primary fs-6 fw-bold me-1"><span
+                                class="text-danger pr-2">Q.</span> Lorem ipsum, dolor sit amet </a>
+
+                          </div>
+                          <!--end::Name-->
+
+                        </div>
+                        <!--end::User-->
+                        <!--begin::Actions-->
+
+                        <div class="col-md-2">
+                          <input type="text" class="form-control py-2" placeholder="">
+                        </div>
+
+
+                      </div>
+                      <!--end::Title-->
+                      <!--begin::Title-->
+                      <div class="d-flex justify-content-between align-items-center mt-5 mb-7 border-bottom pb-3">
+                        <!--begin::User-->
+                        <div class="d-flex flex-column">
+                          <!--begin::Name-->
+                          <div class="">
+                            <a href="#" class="text-gray-900 text-hover-primary fs-6 fw-bold me-1"><span
+                                class="text-danger pr-2">Q.</span> Lorem ipsum, dolor sit amet </a>
+
+                          </div>
+                          <!--end::Name-->
+
+                        </div>
+                        <!--end::User-->
+                        <!--begin::Actions-->
+
+                        <div class="col-md-2">
+                          <input type="text" class="form-control py-2" placeholder="">
+                        </div>
+
+
+                      </div>
+                      <!--end::Title-->
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer p-2">
+
+                  <button type="button" class="btn btn-primary">Run</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+            <!--begin::Container-->
+            <app-footer></app-footer>
+            <!--end::Container-->
+          </div>
+          <!--end::Wrapper-->
+        </div>
+        <!--end::Page-->
+      </div>
+    </div>
+  </div>
+</div>

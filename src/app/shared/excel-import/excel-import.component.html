@@ -1,0 +1,189 @@
+<app-loader [show]="loader"></app-loader>
+<div id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
+
+	<div class="d-flex flex-column flex-root">
+
+		<div class="page d-flex flex-row flex-column-fluid">
+
+			<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+
+				<app-header></app-header>
+
+
+				<div class="toolbar py-5 py-lg-5" id="kt_toolbar">
+
+					<div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
+
+						<div class="page-title d-flex flex-column me-3">
+
+							<h1 class="d-flex text-dark fw-bold my-1 fs-3">Import Excel</h1>
+
+
+							<ul class="breadcrumb breadcrumb-dot fw-semibold text-gray-600 fs-7 my-1">
+
+								<li class="breadcrumb-item text-gray-600">
+									<a routerLink="/cordinator/CoordinatorDashboard" routerLinkActive="active">Home</a>
+								</li>
+								<li class="breadcrumb-item text-gray-600"><a routerLink="/cordinator/EmployeeList"
+										routerLinkActive="active">Employee List</a>
+								</li>
+
+
+
+								<li class="breadcrumb-item text-gray-600"><a>Import Excel</a></li>
+
+								<li class="breadcrumb-item text-gray-500"> <a>Excel List</a></li>
+
+							</ul>
+
+						</div>
+
+
+					</div>
+
+				</div>
+
+				<div class="d-flex flex-column-fluid align-items-start container-xxl" id="kt_content_container ">
+
+
+					<div class="content flex-row-fluid" id=" kt_content">
+
+						<div class="card card-custom">
+							<div class="card-body">
+								<div class="mb-7">
+									<div class="row justify-content-between">
+
+
+										<div class="col-6">
+											<div class="row align-items-center">
+												<div class="col-md-12">
+													<div class="input-icon">
+														<div class="custom-file">
+															<input type="file" class="custom-file-input" id="customFile"
+																(change)="parseData($event)" [(ngModel)]="file" />
+															<!-- <label
+											class="custom-file-label"
+											for="customFile"
+											*ngIf="!file"
+											>Choose file</label
+										  > -->
+															<!-- <label
+											class="custom-file-label"
+											for="customFile"
+											*ngIf="file"
+											>{{ file }}</label -->
+															<!-- > -->
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-6 text-end template_button">
+											<a class="btn btn-light-primary font-weight-bold"
+												href="/assets/doc/excelSamplementor.xlsx"
+												download="sample.xlsx">Download
+												template
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="table-responsive">
+
+							<table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_1">
+
+								<thead>
+									<tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+										<th class="pr-0">First Name</th>
+
+										<th>Last name</th>
+										<th>E-mail</th>
+										<th>Joining Date</th>
+										<th>Job Title </th>
+
+									</tr>
+								</thead>
+								<tbody>
+
+
+									<tr class="alt" *ngFor="let excel of excelList; let ri = index">
+
+										<td>{{excel.firstname}}</td>
+
+										<td>{{excel.lastname}}</td>
+										<td>{{excel.email}}</td>
+										<td>{{excel.dob}}</td>
+										<td>{{excel.sex}}</td>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+						<div class="card-footer">
+							<div class="row">
+								<div class="col-lg-2 offset-lg-10">
+									<a id="kt_ecommerce_add_product_cancel" routerLink="/cordinator/EmployeeList"
+										class="btn btn-light me-5">Cancel</a>
+									<button type="reset" class="btn btn-primary font-weight-bold mr-2"
+										(click)="uploadData()">
+										Save
+									</button>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<app-footer></app-footer>
+
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <input type="file" (change)="onFileChange($event)" multiple="true" />
+{{data}} -->
+<!-- <table class="sjs-table">
+		<tbody>
+      <tr *ngFor="let row of data">
+			<td *ngFor="let val of row">
+				{{val}}
+			</td>
+		</tr>
+    </tbody>
+	</table>
+	<button (click)="export()">Export!</button> -->
+
+<!-- <button type="button" class="btn btn-light-primary me-3" type="file" (change)="onFileChange($event)">
+        <span class="svg-icon svg-icon-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-box-arrow-in-down" viewBox="0 0 16 16">
+<path fill-rule="evenodd" d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z"/>
+<path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+</svg>
+        </span>
+        Import</button> -->

@@ -1,0 +1,405 @@
+<div id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Page-->
+        <div class="page d-flex flex-row flex-column-fluid">
+            <!--begin::Wrapper-->
+            <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+                <!--begin::Header-->
+                <!-- <app-header></app-header> -->
+                <!--end::Header-->
+                <!--begin::Toolbar-->
+                <div class="toolbar py-2" id="kt_toolbar">
+                    <!--begin::Container-->
+                    <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
+                        <!--begin::Page title-->
+                        <div class="page-title d-flex flex-column me-3">
+                            <!--begin::Title-->
+                            <h1 class="d-flex text-gray my-1 fs-5">Forum Details</h1>
+                            <!--end::Title-->
+                            <!--begin::Breadcrumb-->
+                            <ul class="breadcrumb breadcrumb-dot fw-light text-gray-400 fs-8">
+                                <!--begin::Item-->
+
+                                <li class="breadcrumb-item text-gray-600" *ngIf="loginDetails?.roleId == '101'">
+                                    <a routerLink="/cordinator/CoordinatorDashboard" routerLinkActive="active">Home</a>
+                                </li>
+                                <li class="breadcrumb-item text-gray-600" *ngIf="loginDetails?.roleId == '102'">
+                                    <a routerLink="/mentor/MentorDashboard" routerLinkActive="active">Home</a>
+                                </li>
+                                <li class="breadcrumb-item text-gray-600" *ngIf="loginDetails?.roleId == '103'">
+                                    <a routerLink="/mentee/menteeDashboard" routerLinkActive="active">Home</a>
+                                </li>
+                                <!--end::Item-->
+                                <!--begin::Item-->
+                                <li class="breadcrumb-item text-gray-500"><a href="" routerLink="/forum"
+                                        routerLinkActive="active">Forum</a>
+                                </li>
+                                <!-- <li class="breadcrumb-item text-gray-500">
+                                    <a href="" routerLink="/mentee/MenteeProgram" routerLinkActive="active">Program</a>
+                                </li> -->
+                                <!--end::Item-->
+                                <!--begin::Item-->
+                                <li class="breadcrumb-item text-gray-500">
+                                    <a>Forum Details</a>
+                                </li>
+                                <!--end::Item-->
+                            </ul>
+                            <!--end::Breadcrumb-->
+                        </div>
+                        <!--end::Page title-->
+                        <div class="" *ngIf="loginDetails?.roleId == '101'">
+                            <a routerLink="/cordinator/CoordinatorDashboard" routerLinkActive="active"
+                                class="btn btn-gray btn-sm fs-9"><svg xmlns="http://www.w3.org/2000/svg" width="12"
+                                    height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="svg replaced-svg">
+                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                </svg>
+                                Go Back</a>
+                        </div>
+                        <div class="" *ngIf="loginDetails?.roleId == '102'">
+                            <a routerLink="/mentor/MentorDashboard" routerLinkActive="active"
+                                class="btn btn-gray btn-sm fs-9"><svg xmlns="http://www.w3.org/2000/svg" width="12"
+                                    height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="svg replaced-svg">
+                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                </svg>
+                                Go Back</a>
+                        </div>
+                        <div class="" *ngIf="loginDetails?.roleId == '103'">
+                            <a routerLink="/mentee/menteeDashboard" routerLinkActive="active"
+                                class="btn btn-gray btn-sm fs-9"><svg xmlns="http://www.w3.org/2000/svg" width="12"
+                                    height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="svg replaced-svg">
+                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                </svg>
+                                Go Back</a>
+                        </div>
+                    </div>
+                    <!--end::Container-->
+                </div>
+                <!--end::Toolbar-->
+                <!--begin::Container-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="answer-action shadow-sm">
+                                <div class="action-content">
+                                    <div class="image-wrap">
+                                        <img src="images/answer.png" alt="answer action">
+                                    </div>
+                                    <div class="content">
+                                        <h2 class="ans-title">Can’t find an answer?</h2>
+                                        <p> Make use of a qualified tutor to get the answer </p>
+                                    </div>
+                                </div>
+                                <!-- /.action-content -->
+                                <div class="action-button-container">
+                                    <!-- <a href="#" class="btn btn-primary fs-8 btn-sm ">Ask a Question</a> -->
+                                    <button class="btn btn-primary fs-8 btn-sm" (click)="display = true"> Ask a
+                                        Question</button>
+                                </div>
+                                <!-- /.action-button-container -->
+                            </div>
+                            <div class="forum_topic_list_inner">
+                                <div class="forum_l_inner">
+                                    <div class="forum_head d-flex justify-content-between">
+                                        <div><i class="icon_error-circle_alt"></i> Question</div>
+
+                                        <ul class="nav right">
+                                            <li>
+                                                <i class="icon_error-circle_alt"></i> Action
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="forum_body">
+                                        <ul class="navbar-nav topic_list">
+                                            <li>
+                                                <div class="media">
+                                                    <div class="d-flex">
+                                                        <img class="rounded-circle"
+                                                            src="https://html.spiderthemes-demos.com/ama/img/home_support/cp5.jpg"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <div class="t_title">
+                                                            <a href="forum-single.html">
+                                                                <h4>One page template</h4>
+                                                            </a>
+                                                        </div>
+
+                                                        <h6>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                                                height="14" fill="currentColor" class="bi bi-boxes"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434L7.752.066ZM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567L4.25 7.504ZM7.5 9.933l-2.75 1.571v3.134l2.75-1.571V9.933Zm1 3.134 2.75 1.571v-3.134L8.5 9.933v3.134Zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567-2.742 1.567Zm2.242-2.433V3.504L8.5 5.076V8.21l2.75-1.572ZM7.5 8.21V5.076L4.75 3.504v3.134L7.5 8.21ZM5.258 2.643 8 4.21l2.742-1.567L8 1.076 5.258 2.643ZM15 9.933l-2.75 1.571v3.134L15 13.067V9.933ZM3.75 14.638v-3.134L1 9.933v3.134l2.75 1.571Z" />
+                                                            </svg><span class="ms-1">General</span>
+                                                        </h6>
+
+                                                        <h6>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                                                height="14" fill="currentColor" class="bi bi-stopwatch"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z" />
+                                                                <path
+                                                                    d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z" />
+                                                            </svg> <span class="ms-1">26 minutes ago</span>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="media-right">
+                                                        <a title="View Program"
+                                                            class="btn btn-light-success btn-sm  me-2" href=""><svg
+                                                                xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor" viewBox="0 0 16 16"
+                                                                class="bi bi-eye">
+                                                                <path _ngcontent-fcn-c108=""
+                                                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z">
+                                                                </path>
+                                                                <path
+                                                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
+                                                                </path>
+                                                            </svg> view</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="media">
+                                                    <div class="d-flex">
+                                                        <img class="rounded-circle"
+                                                            src="https://html.spiderthemes-demos.com/ama/img/home_support/cp5.jpg"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <div class="t_title">
+                                                            <a href="forum-single.html">
+                                                                <h4>Support "IntelliSense" plugin for JetBrains WebStorm
+                                                                </h4>
+                                                            </a>
+                                                        </div>
+                                                        <h6>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                                                height="14" fill="currentColor" class="bi bi-boxes"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434L7.752.066ZM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567L4.25 7.504ZM7.5 9.933l-2.75 1.571v3.134l2.75-1.571V9.933Zm1 3.134 2.75 1.571v-3.134L8.5 9.933v3.134Zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567-2.742 1.567Zm2.242-2.433V3.504L8.5 5.076V8.21l2.75-1.572ZM7.5 8.21V5.076L4.75 3.504v3.134L7.5 8.21ZM5.258 2.643 8 4.21l2.742-1.567L8 1.076 5.258 2.643ZM15 9.933l-2.75 1.571v3.134L15 13.067V9.933ZM3.75 14.638v-3.134L1 9.933v3.134l2.75 1.571Z" />
+                                                            </svg><span class="ms-1">General</span>
+                                                        </h6>
+
+                                                        <h6>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                                                height="14" fill="currentColor" class="bi bi-stopwatch"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z" />
+                                                                <path
+                                                                    d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z" />
+                                                            </svg> <span class="ms-1">2 minutes ago</span>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="media-right">
+                                                        <a title="View Program"
+                                                            class="btn btn-light-success btn-sm  me-2" href=""><svg
+                                                                xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor" viewBox="0 0 16 16"
+                                                                class="bi bi-eye">
+                                                                <path _ngcontent-fcn-c108=""
+                                                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z">
+                                                                </path>
+                                                                <path
+                                                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
+                                                                </path>
+                                                            </svg> view</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="media">
+                                                    <div class="d-flex">
+                                                        <img class="rounded-circle"
+                                                            src="https://html.spiderthemes-demos.com/ama/img/home_support/cp5.jpg"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <div class="t_title">
+                                                            <a href="forum-single.html">
+                                                                <h4>Support "IntelliSense" plugin for JetBrains WebStorm
+                                                                </h4>
+                                                            </a>
+                                                        </div>
+                                                        <h6>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                                                height="14" fill="currentColor" class="bi bi-boxes"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434L7.752.066ZM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567L4.25 7.504ZM7.5 9.933l-2.75 1.571v3.134l2.75-1.571V9.933Zm1 3.134 2.75 1.571v-3.134L8.5 9.933v3.134Zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567-2.742 1.567Zm2.242-2.433V3.504L8.5 5.076V8.21l2.75-1.572ZM7.5 8.21V5.076L4.75 3.504v3.134L7.5 8.21ZM5.258 2.643 8 4.21l2.742-1.567L8 1.076 5.258 2.643ZM15 9.933l-2.75 1.571v3.134L15 13.067V9.933ZM3.75 14.638v-3.134L1 9.933v3.134l2.75 1.571Z" />
+                                                            </svg><span class="ms-1">General</span>
+                                                        </h6>
+
+                                                        <h6>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                                                height="14" fill="currentColor" class="bi bi-stopwatch"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z" />
+                                                                <path
+                                                                    d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z" />
+                                                            </svg> <span class="ms-1">2 minutes ago</span>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="media-right">
+                                                        <a title="View Program"
+                                                            class="btn btn-light-success btn-sm  me-2" href=""><svg
+                                                                xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor" viewBox="0 0 16 16"
+                                                                class="bi bi-eye">
+                                                                <path _ngcontent-fcn-c108=""
+                                                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z">
+                                                                </path>
+                                                                <path
+                                                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
+                                                                </path>
+                                                            </svg> view</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="media">
+                                                    <div class="d-flex">
+                                                        <img class="rounded-circle"
+                                                            src="https://html.spiderthemes-demos.com/ama/img/home_support/cp5.jpg"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <div class="t_title">
+                                                            <a href="forum-single.html">
+                                                                <h4>Support "IntelliSense" plugin for JetBrains WebStorm
+                                                                </h4>
+                                                            </a>
+                                                        </div>
+                                                        <h6>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                                                height="14" fill="currentColor" class="bi bi-boxes"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434L7.752.066ZM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567L4.25 7.504ZM7.5 9.933l-2.75 1.571v3.134l2.75-1.571V9.933Zm1 3.134 2.75 1.571v-3.134L8.5 9.933v3.134Zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567-2.742 1.567Zm2.242-2.433V3.504L8.5 5.076V8.21l2.75-1.572ZM7.5 8.21V5.076L4.75 3.504v3.134L7.5 8.21ZM5.258 2.643 8 4.21l2.742-1.567L8 1.076 5.258 2.643ZM15 9.933l-2.75 1.571v3.134L15 13.067V9.933ZM3.75 14.638v-3.134L1 9.933v3.134l2.75 1.571Z" />
+                                                            </svg><span class="ms-1">General</span>
+                                                        </h6>
+
+                                                        <h6>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                                                height="14" fill="currentColor" class="bi bi-stopwatch"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z" />
+                                                                <path
+                                                                    d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z" />
+                                                            </svg> <span class="ms-1">2 minutes ago</span>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="media-right">
+                                                        <a title="View Program"
+                                                            class="btn btn-light-success btn-sm  me-2" href=""><svg
+                                                                xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor" viewBox="0 0 16 16"
+                                                                class="bi bi-eye">
+                                                                <path _ngcontent-fcn-c108=""
+                                                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z">
+                                                                </path>
+                                                                <path
+                                                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
+                                                                </path>
+                                                            </svg> view</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="pagination-wrapper d-flex justify-content-between align-items-center mt-2">
+                                    <div class="view-post-of">
+                                        <p>Viewing 8 topics - 1 through 10 (of 342 total)</p>
+                                    </div>
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination">
+                                            <li class="page-item">
+                                                <a class="page-link" href="#" aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#" aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+
+                            <!-- /.community-posts-wrapper -->
+                        </div>
+                        <!-- /.col-lg-9 -->
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-dialog [(visible)]="display" [modal]="true" class="" [style]="{ width: '50vw', height: '35vw' }">
+    <div class="forum-questionary p-1">
+        <div class="row ">
+            <div class="col-md-12">
+                <div class="post">
+                    <form action="#" class="form newtopic" method="post">
+                        <div class="topwrap">
+
+                            <div class="posttext ">
+
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Topic Title</label>
+                                    <input type="text" placeholder="" class="form-control">
+                                </div>
+
+
+
+                                <div class="mb-3">
+                                    <label class="form-label">Description</label>
+                                    <textarea name="desc" id="desc" placeholder="" rows="5"
+                                        class="form-control"></textarea>
+                                </div>
+
+
+
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="postinfobot text-end">
+
+                            <button type="submit" class="btn btn-primary fs-8 btn-sm ">Post</button>
+
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- <div class="col-md-4">
+                <img src="images/1.png" class="img-fluid">
+            </div> -->
+        </div>
+    </div>
+</p-dialog>

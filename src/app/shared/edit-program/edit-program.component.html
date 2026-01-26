@@ -1,0 +1,407 @@
+<app-loader [show]="loader"></app-loader>
+<div id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
+  <!--begin::Theme mode setup on page load-->
+  <!--end::Theme mode setup on page load-->
+  <!--begin::Main-->
+  <!--begin::Root-->
+  <div class="d-flex flex-column flex-root">
+    <!--begin::Page-->
+    <div class="page d-flex flex-row flex-column-fluid">
+      <!--begin::Wrapper-->
+      <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+        <!--begin::Header-->
+        <app-header></app-header>
+        <!--end::Header-->
+        <!--begin::Toolbar-->
+        <div class="toolbar py-2" id="kt_toolbar">
+          <!--begin::Container-->
+          <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
+            <!--begin::Page title-->
+            <div class="page-title d-flex flex-column me-3">
+              <!--begin::Title-->
+              <h1 *ngIf="!editId" class="d-flex text-gray my-1 fs-5">
+                Create Program
+              </h1>
+              <h1 *ngIf="editId" class="d-flex text-gray my-1 fs-5">
+                Edit Program
+              </h1>
+              <!--end::Title-->
+              <!--begin::Breadcrumb-->
+              <ul class="breadcrumb breadcrumb-dot fw-light text-gray-400 fs-8">
+                <!--begin::Item-->
+                <li class="breadcrumb-item text-gray-600" style="cursor: pointer">
+                  <a routerLink="/cordinator/CoordinatorDashboard" class="text-gray-600 text-hover-primary">Home</a>
+
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <li style="cursor: pointer" class="breadcrumb-item text-gray-500" routerLink="/cordinator/program">
+                  Program
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <li *ngIf="!editId" class="breadcrumb-item text-gray-500">
+                  Create Program
+                </li>
+                <li *ngIf="editId" class="breadcrumb-item text-gray-500">
+                  Edit Program
+                </li>
+                <!--end::Item-->
+              </ul>
+              <!--end::Breadcrumb-->
+            </div>
+            <!--end::Page title-->
+            <!--begin::Actions-->
+            <div class="d-flex align-items-center py-2 py-md-1">
+              <!--begin::Button-->
+              <!-- <a class="btn btn-danger fw-bold" data-bs-toggle="modal" data-bs-target="#kt_modal_create_session"
+                id="kt_toolbar_primary_button">Delete</a> -->
+              <!--end::Button-->
+            </div>
+            <!--end::Actions-->
+          </div>
+          <!--end::Container-->
+        </div>
+        <!--end::Toolbar-->
+        <!--begin::Container-->
+        <div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
+          <!--begin::Post-->
+          <div class="content flex-row-fluid" id="kt_content">
+            <form [formGroup]="createProgramForm" id="kt_ecommerce_add_category_form"
+              class="form d-flex flex-column flex-lg-row">
+              <!--begin::Aside column-->
+              <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
+                <!--begin::Status-->
+                <div class="card card-flush">
+                  <!--begin::Card header-->
+                  <div class="card-header px-3">
+                    <!--begin::Card title-->
+                    <div class="card-title ">
+                      <h3 class="fw-semibold m-0 fs-6">Select Survey</h3>
+                    </div>
+                    <!--end::Card title-->
+                  </div>
+                  <!--end::Card header-->
+                  <!--begin::Card body-->
+                  <div class="card-body pt-0">
+                    <!--begin::Select2-->
+
+                    <!--begin::Select2-->
+                    <div class="form-group mb-6">
+                      <label class="fs-7 fw-semibold"> Mentee</label>
+                      <select class="form-select form-control mb-2" formControlName="surveyMentee"
+                        data-control="select2" data-hide-search="true" data-placeholder="Select an option"
+                        id="kt_ecommerce_add_category_status_select">
+                        <option *ngFor="let survey of surveyMenteeList; let i = index" [value]="survey.Id">
+                          {{ survey.title }}
+                        </option>
+                      </select>
+                    </div>
+                    <p class="text-danger error_msg"
+                      *ngIf="createProgramForm.controls['surveyMentee'].touched && createProgramForm.controls['surveyMentee'].hasError('required')">
+                      <b>Mentee survey is mandatory.</b>
+                    </p>
+                    <div class="form-group">
+                      <label class="fs-7 fw-semibold"> Mentor</label>
+                      <select class="form-select form-control mb-2" formControlName="surveyMentor"
+                        data-control="select2" data-hide-search="true" data-placeholder="Select an option"
+                        id="kt_ecommerce_add_category_status_select">
+                        <option *ngFor="let survey of surveyMenteeList; let i = index" [value]="survey.Id">
+                          {{ survey.title }}
+                        </option>
+                      </select>
+                    </div>
+                    <p class="text-danger error_msg"
+                      *ngIf="createProgramForm.controls['surveyMentor'].touched && createProgramForm.controls['surveyMentor'].hasError('required')">
+                      <b>Mentor survey is mandatory.</b>
+                    </p>
+
+                  </div>
+                  <!--end::Card body-->
+                </div>
+                <!--end::Status-->
+                <!--begin::Status-->
+                <div class="card card-flush ">
+                  <!--begin::Card header-->
+                  <div class="card-header px-3">
+                    <!--begin::Card title-->
+                    <div class="card-title">
+                      <h3 class="fw-semibold m-0 fs-6">Status</h3>
+                    </div>
+                    <!--end::Card title-->
+                    <!--begin::Card toolbar-->
+                    <!-- <div class="card-toolbar">
+                      <div class="rounded-circle bg-success w-15px h-15px" id="kt_ecommerce_add_category_status"></div>
+                    </div> -->
+                    <!--begin::Card toolbar-->
+                  </div>
+                  <!--end::Card header-->
+                  <!--begin::Card body-->
+                  <div class="card-body">
+                    <!--begin::Select2-->
+                    <select class="form-select mb-2" formControlName="status" data-control="select2"
+                      data-hide-search="true" data-placeholder="Select an option"
+                      id="kt_ecommerce_add_category_status_select">
+                      <option *ngFor="let status of status; let i = index" [value]="status.statusId">
+                        {{ status.statusLabel }}
+                      </option>
+                    </select>
+                    <p class="text-danger error_msg" *ngIf="
+                        createProgramForm.controls['status'].touched &&
+                        createProgramForm.controls['status'].hasError(
+                          'required'
+                        )
+                      ">
+                      <b>Status is mandatory.</b>
+                    </p>
+                    <!--end::Select2-->
+                    <!--begin::Description-->
+                    <div class="text-muted fs-7">Set the program status.</div>
+                    <!--end::Description-->
+                  </div>
+                  <!--end::Card body-->
+                </div>
+                <!--end::Status-->
+
+                <!--begin::groupSize-->
+                <div class="card card-flush py-2">
+                  <!--begin::Card header-->
+                  <div class="card-header px-3">
+                    <!--begin::Card title-->
+                    <div class="card-title">
+                      <h3 class="fw-semibold m-0 fs-6">Mentoring Cohort Size</h3>
+                    </div>
+                    <!--end::Card title-->
+                    <!--begin::Card toolbar-->
+                    <!-- <div class="card-toolbar">
+                      <div class="rounded-circle bg-success w-15px h-15px"></div>
+                    </div> -->
+                    <!--begin::Card toolbar-->
+                  </div>
+                  <!--end::Card header-->
+                  <!--begin::Card body-->
+                  <div class="card-body pt-0">
+                    <input type="text" formControlName="groupSize" name="groupSize" class="form-control mb-2"
+                      placeholder="Group Size" value="" />
+                    <!--begin::Description-->
+                    <div class="text-muted fs-7">
+                      Set the Mentoring Cohort size.
+                    </div>
+                    <!--end::Description-->
+                    <p class="text-danger error_msg" *ngIf="
+                        createProgramForm.controls['groupSize'].touched &&
+                        createProgramForm.controls['groupSize'].hasError(
+                          'required'
+                        )
+                      ">
+                      <b>Mentees per Mentor</b>
+                    </p>
+                  </div>
+                  <!--end::Card body-->
+                </div>
+                <!--end::groupSize-->
+              </div>
+              <!--end::Aside column-->
+              <!--begin::Main column-->
+              <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+                <!--begin::General options-->
+                <div class="card card-flush py-1">
+                  <!--begin::Card header-->
+                  <div *ngIf="!editId" class="card-header px-3">
+                    <div class="card-title">
+                      <h3 class="fw-semibold m-0 fs-6">Create Program</h3>
+                    </div>
+                  </div>
+                  <div *ngIf="editId" class="card-header px-3">
+                    <div class="card-title">
+                      <h3 class="fw-semibold m-0 fs-6">Edit Program</h3>
+                    </div>
+                  </div>
+                  <!--end::Card header-->
+                  <!--begin::Card body-->
+                  <div class="card-body pt-0">
+                    <!--begin::Input group-->
+                    <div class="mb-10 fv-row">
+                      <!--begin::Label-->
+                      <label class="required form-label">Program Name</label>
+                      <!--end::Label-->
+                      <!--begin::Input-->
+                      <input type="text" formControlName="programName" name="category_name" class="form-control mb-2"
+                        placeholder="Program name" value="" />
+                      <!--end::Input-->
+                      <!--begin::Description-->
+                      <div class="text-muted fs-7">
+                        A program name is required and recommended to be unique.
+                      </div>
+                      <!--end::Description-->
+                      <p class="text-danger error_msg" *ngIf="
+                          createProgramForm.controls['programName'].touched &&
+                          createProgramForm.controls['programName'].hasError(
+                            'required'
+                          )
+                        ">
+                        <b>Program name is mandatory.</b>
+                      </p>
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="mb-10">
+                      <!--begin::Label-->
+                      <label class="form-label">Short Description</label>
+                      <!--end::Label-->
+                      <!--begin::Editor-->
+                      <textarea class="form-control" formControlName="shortDescription" rows="2"></textarea>
+                      <!--end::Editor-->
+                      <!--begin::Description-->
+                      <div class="text-muted fs-7">
+                        Set a description to the program for better visibility.
+                      </div>
+                      <!--end::Description-->
+                      <p class="text-danger error_msg" *ngIf="
+                          createProgramForm.controls['shortDescription']
+                            .touched &&
+                          createProgramForm.controls[
+                            'shortDescription'
+                          ].hasError('required')
+                        ">
+                        <b>Short description is mandatory.</b>
+                      </p>
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div>
+                      <!--begin::Label-->
+                      <label class="form-label">Long Description</label>
+                      <!--end::Label-->
+                      <!--begin::Editor-->
+                      <textarea class="form-control" formControlName="longDescription" id="exampleFormControlTextarea1"
+                        rows="3"></textarea>
+                      <!--end::Editor-->
+                      <!--begin::Description-->
+                      <div class="text-muted fs-7">
+                        Set a description to the program for better visibility.
+                      </div>
+                      <!--end::Description-->
+                      <p class="text-danger error_msg" *ngIf="
+                          createProgramForm.controls['longDescription']
+                            .touched &&
+                          createProgramForm.controls[
+                            'longDescription'
+                          ].hasError('required')
+                        ">
+                        <b>Long description is mandatory.</b>
+                      </p>
+                    </div>
+                    <!--end::Input group-->
+                  </div>
+                  <!--end::Card header-->
+                </div>
+                <!--end::General options-->
+                <!--begin::Meta options-->
+                <div class="card card-flush py-2">
+                  <!--begin::Card header-->
+                  <div class="card-header px-3">
+                    <div class="card-title">
+                      <h3 class="fw-semibold m-0 fs-6">Program Duration</h3>
+                    </div>
+                  </div>
+                  <!--end::Card header-->
+                  <!--begin::Card body-->
+                  <div class="card-body pt-0">
+                    <!--end::Input group-->
+                    <div class="row">
+                      <!--begin::Input group-->
+                      <div class="mb-10 col-md-6">
+                        <!--begin::Label-->
+                        <label class="form-label">Start Date</label>
+                        <!--end::Label-->
+                        <!--begin::Input-->
+                        <input type="date" formControlName="startDate" class="form-control mb-2" name="meta_title"
+                          placeholder="Meta tag name" />
+                        <!--end::Input-->
+                        <!--begin::Description-->
+                        <div class="text-muted fs-7">
+                          <!-- Set a start date. Recommended to be simple and precise
+                          keywords. -->
+                        </div>
+                        <!--end::Description-->
+                        <p class="text-danger error_msg" *ngIf="
+                            createProgramForm.controls['startDate'].touched &&
+                            createProgramForm.controls['startDate'].hasError(
+                              'required'
+                            )
+                          ">
+                          <b>Start date is mandatory.</b>
+                        </p>
+                      </div>
+                      <!--end::Input group-->
+                      <!--begin::Input group-->
+                      <div class="mb-10 col-md-6">
+                        <!--begin::Label-->
+                        <label class="form-label">End Date</label>
+                        <!--end::Label-->
+                        <!--begin::Input-->
+                        <input type="date" formControlName="endDate" class="form-control mb-2" name="meta_title"
+                          placeholder="Meta tag name" />
+                        <!--end::Input-->
+                        <!--begin::Description-->
+                        <div class="text-muted fs-7">
+                          <!-- Set a end date. Recommended to be simple and precise
+                          keywords. -->
+                        </div>
+                        <!--end::Description-->
+                        <p class="text-danger error_msg" *ngIf="
+                            createProgramForm.controls['startDate'].touched &&
+                            createProgramForm.controls['startDate'].hasError(
+                              'required'
+                            )
+                          ">
+                          <b>End date is mandatory.</b>
+                        </p>
+                      </div>
+                      <!--end::Input group-->
+                    </div>
+                  </div>
+                  <!--end::Card header-->
+                </div>
+                <!--end::Meta options-->
+
+                <div class="d-flex justify-content-end">
+                  <!--begin::Button-->
+                  <a id="kt_ecommerce_add_product_cancel" *ngIf="loginDetails?.roleId == '101' "
+                    routerLink="/cordinator/program" class="btn btn-light me-2 btn-sm">Cancel</a>
+                  <a id="kt_ecommerce_add_product_cancel" *ngIf="loginDetails?.roleId == '102' "
+                    routerLink="/mentor/mentorProgram" class="btn btn-light me-2 btn-sm">Cancel</a>
+                  <a id="kt_ecommerce_add_product_cancel" *ngIf="loginDetails?.roleId == '103' "
+                    routerLink="/mentee/MenteeProgram" class="btn btn-light me-2 btn-sm">Cancel</a>
+                  <!--end::Button-->
+                  <!--begin::Button-->
+                  <button type="submit" id="kt_ecommerce_add_category_submit" class="btn btn-primary btn-sm"
+                    (click)="createProgram()">
+                    <span class="indicator-label" *ngIf="!editId">Create Program</span>
+                    <span class="indicator-label" *ngIf="editId">Update</span>
+                    <span class="indicator-progress">Please wait...
+                      <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                  </button>
+                  <!--end::Button-->
+                </div>
+              </div>
+              <!--end::Main column-->
+            </form>
+          </div>
+          <!--end::Post-->
+        </div>
+        <!--end::Container-->
+        <!--begin::Footer-->
+        <div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+          <!--begin::Container-->
+          <app-footer></app-footer>
+          <!--end::Container-->
+        </div>
+        <!--end::Footer-->
+      </div>
+      <!--end::Wrapper-->
+    </div>
+    <!--end::Page-->
+  </div>
+</div>

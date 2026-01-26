@@ -1,0 +1,20 @@
+.description{
+    display: block;
+  width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+ul#setPriority {
+  background: #ddffec96;
+  padding: 10px;
+  margin-bottom: 25px;
+  
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+div#setPriorityContent {
+  padding: 8px 28px;
+}
+.program-design{
+  cursor: pointer;
+}

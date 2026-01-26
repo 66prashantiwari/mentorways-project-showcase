@@ -1,0 +1,263 @@
+<!-- <app-loader [show]="loader"></app-loader> -->
+
+<div id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Page-->
+        <div class="page d-flex flex-row flex-column-fluid">
+            <!--begin::Wrapper-->
+            <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+                <!--begin::Header-->
+
+                <app-header *ngIf="loginDetails?.roleId=='101'"></app-header>
+                <app-mentee-header *ngIf="loginDetails?.roleId=='103'"></app-mentee-header>
+                <app-mentor-header *ngIf="loginDetails?.roleId=='102'"></app-mentor-header>
+
+                <!--end::Header-->
+                <!--begin::Toolbar-->
+                <div class="toolbar py-2" id="kt_toolbar">
+                    <!--begin::Container-->
+                    <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
+                        <!--begin::Page title-->
+                        <div class="page-title d-flex flex-column me-3">
+                            <!--begin::Title-->
+                            <h1 class="d-flex text-gray my-1 fs-5">Forum</h1>
+                            <!--end::Title-->
+                            <!--begin::Breadcrumb-->
+                            <ul class="breadcrumb breadcrumb-dot fw-light text-gray-400 fs-8">
+                                <!--begin::Item-->
+
+                                <li class="breadcrumb-item text-gray-600" *ngIf="loginDetails?.roleId == '101'">
+                                    <a routerLink="/cordinator/CoordinatorDashboard" routerLinkActive="active">Home</a>
+                                </li>
+                                <li class="breadcrumb-item text-gray-600" *ngIf="loginDetails?.roleId == '102'">
+                                    <a routerLink="/mentor/MentorDashboard" routerLinkActive="active">Home</a>
+                                </li>
+                                <li class="breadcrumb-item text-gray-600" *ngIf="loginDetails?.roleId == '103'">
+                                    <a routerLink="/mentee/menteeDashboard" routerLinkActive="active">Home</a>
+                                </li>
+                                <!--end::Item-->
+                                <!--begin::Item-->
+                                <!-- <li class="breadcrumb-item text-gray-500"
+                  *ngIf="loginDetails?.roleId !== '102' && loginDetails?.roleId !== '103' "><a href=""
+                    routerLink="/cordinator/program" routerLinkActive="active">Program</a>
+                </li> -->
+                                <!-- <li class="breadcrumb-item text-gray-500">
+                                    <a href="" routerLink="/mentee/MenteeProgram" routerLinkActive="active">Program</a>
+                                </li> -->
+                                <!--end::Item-->
+                                <!--begin::Item-->
+                                <li class="breadcrumb-item text-gray-500">
+                                    <a>Forum</a>
+                                </li>
+                                <!--end::Item-->
+                            </ul>
+                            <!--end::Breadcrumb-->
+                        </div>
+                        <!--end::Page title-->
+                        <div class="" *ngIf="loginDetails?.roleId == '101'">
+                            <a routerLink="/cordinator/CoordinatorDashboard" routerLinkActive="active"
+                                class="btn btn-gray btn-sm fs-9"><svg xmlns="http://www.w3.org/2000/svg" width="12"
+                                    height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="svg replaced-svg">
+                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                </svg>
+                                Go Back</a>
+                        </div>
+                        <div class="" *ngIf="loginDetails?.roleId == '102'">
+                            <a routerLink="/mentor/MentorDashboard" routerLinkActive="active"
+                                class="btn btn-gray btn-sm fs-9"><svg xmlns="http://www.w3.org/2000/svg" width="12"
+                                    height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="svg replaced-svg">
+                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                </svg>
+                                Go Back</a>
+                        </div>
+                        <div class="" *ngIf="loginDetails?.roleId == '103'">
+                            <a routerLink="/mentee/menteeDashboard" routerLinkActive="active"
+                                class="btn btn-gray btn-sm fs-9"><svg xmlns="http://www.w3.org/2000/svg" width="12"
+                                    height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="svg replaced-svg">
+                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                </svg>
+                                Go Back</a>
+                        </div>
+                    </div>
+                    <!--end::Container-->
+                </div>
+                <!--end::Toolbar-->
+                <!--begin::Container-->
+                <div>
+                    <div class="container">
+                        <div class="row">
+                            <!-- <div class="search-hero">
+                                <input class="form-control" type="text" formControlName="search"
+                                    (keyup)="search($event)" autocomplete="off" placeholder="Search">
+                            </div> -->
+                            <div class="col-lg-12">
+                                <div class="answer-action border-gray-300  rounded bg-light-secondary ">
+                                    <div class="action-content">
+                                        <!-- <div class="image-wrap">
+                                            <img src="images/answer.png" alt="answer action">
+                                        </div> -->
+                                        <div class="content py-2">
+                                            <h2 class="ans-title">Can’t find an answer?</h2>
+                                            <p class="mb-0"> Make use of a specialist to get the answer to your query
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- /.action-content -->
+                                    <div class="action-button-container" *ngIf="loginDetails?.roleId == '101'">
+                                        <!-- <a href="#" class="btn btn-primary fs-8 btn-sm ">Ask a Question</a> -->
+                                        <button class="btn btn-primary fs-8 btn-sm" (click)="display = true"> Ask a
+                                            Question</button>
+                                    </div>
+                                    <!-- /.action-button-container -->
+                                </div>
+                                <!-- /.answer-action -->
+
+                                <div class="card-body py-2 table-responsive border-gray-300 border rounded">
+                                    <div class="d-flex align-items-center position-relative my-1 px-3">
+                                        <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+                                        <span class="svg-icon svg-icon-1 position-absolute ms-6">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2"
+                                                    rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor" />
+                                                <path
+                                                    d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
+                                                    fill="currentColor" />
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                        <input type="text" data-kt-user-table-filter="search"
+                                            class="form-control form-control-solid w-250px ps-14"
+                                            placeholder="Search Forum" (keyup)="search($event)" />
+                                    </div>
+                                    <p-table #dt1 [value]="forumlist" [paginator]="true" [rows]="10"
+                                        id="kt_widget_table_3" data-kt-table-widget-3="all"
+                                        [globalFilterFields]="['topic','modifiedDate']">
+                                        <ng-template pTemplate="header" class="border-gray-300 border">
+
+                                            <tr class="text-start text-muted fw-semibold fs-8 text-uppercase gs-2">
+                                                <th pSortableColumn="topic">Forum <p-sortIcon field="name"></p-sortIcon>
+                                                </th>
+                                                <th pSortableColumn="modifiedDate">POSTED ON<p-sortIcon
+                                                        field="name"></p-sortIcon></th>
+                                                <th *ngIf="loginDetails?.roleId == '101'">Actions</th>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="body" let-item>
+                                            <tr href="" routerLink="/forum/forumdetails/{{item.Id}}"
+                                                routerLinkActive="active">
+                                                <td class="min-w-125px">
+                                                    <div class="entry-content">
+                                                        <a href="" routerLink="/forum/forumdetails/{{item.Id}}"
+                                                            routerLinkActive="active">
+                                                            <h3 class="post-title fs-6 mb-1 pt-1"> {{item.topic}} </h3>
+                                                        </a>
+                                                        <p>{{item.description}}</p>
+                                                    </div>
+                                                </td>
+
+                                                <td class="entry-content">
+                                                    {{item.modifiedDate | date : "medium"}}
+                                                </td>
+                                                <td class="" *ngIf="loginDetails?.roleId == '101'">
+                                                    <a (click)="deletelist(item)"
+                                                        class="btn btn-light-danger btn-sm btn-icon "
+                                                        data-bs-toggle="modal" data-bs-target="#delete"
+                                                        title="Delete Program" data-kt-users-table-filter="delete_row">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-trash-fill"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                                        </svg>
+                                                    </a>
+                                                </td>
+                                            </tr>
+
+                                        </ng-template>
+
+                                    </p-table>
+
+                                </div>
+                                <p-dialog [(visible)]="displaydelete" [modal]="true" class="text-center">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div class="swal2-icon swal2-error swal2-icon-show"
+                                                    style="display: flex;">
+                                                    <span class="swal2-x-mark">
+                                                        <span class="swal2-x-mark-line-left"></span>
+                                                        <span class="swal2-x-mark-line-right"></span>
+                                                    </span>
+                                                </div>
+                                                <div class="swal2-html-container">Are you sure you want to delete this ?
+                                                </div>
+                                                <div class="text-center mt-3">
+                                                    <button type="button" class="btn btn-light btn-sm fs-8 "
+                                                        (click)="displaydelete = false">Cancel</button>
+                                                    <button style="margin-left: 4px;" type="button"
+                                                        class="btn btn-primary btn-sm fs-8 "
+                                                        (click)="deleteForum()">Confirm</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </p-dialog>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <p-dialog [(visible)]="display" [modal]="true" class="" [style]="{ width: '50vw', height: '27vw' }">
+        <div class="forum-questionary p-1">
+            <div class="row ">
+                <div class="col-md-12">
+                    <div class="post">
+                        <form [formGroup]="createForm" class="form newtopic">
+                            <div class="topwrap">
+                                <div class="posttext ">
+                                    <div class="mb-3">
+                                        <label class="form-label">Enter Topic Title</label>
+                                        <input type="text" placeholder="Topic" formControlName="topic"
+                                            class="form-control">
+                                        <p class="text-danger error_msg"
+                                            *ngIf="createForm.controls['topic'].touched && createForm.controls['topic'].hasError('required')">
+                                            <b>Topic is mandatory.</b>
+                                        </p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Description</label>
+                                        <textarea name="desc" placeholder="Description" formControlName="description"
+                                            rows="5" class="form-control"></textarea>
+                                        <p class="text-danger error_msg"
+                                            *ngIf="createForm.controls['description'].touched && createForm.controls['description'].hasError('required')">
+                                            <b>Description is mandatory.</b>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="postinfobot text-end">
+                                <button type="submit" class="btn btn-primary fs-8 btn-sm "
+                                    (click)="postForumList()">Post</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- <div class="col-md-4">
+                <img src="images/1.png" class="img-fluid">
+            </div> -->
+            </div>
+        </div>
+    </p-dialog>
+</div>

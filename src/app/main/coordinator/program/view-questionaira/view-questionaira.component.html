@@ -1,0 +1,184 @@
+<app-loader [show]="loader"></app-loader>
+
+<div id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
+  <div class="d-flex flex-column flex-root">
+    <!--begin::Page-->
+    <div class="page d-flex flex-row flex-column-fluid">
+      <!--begin::Wrapper-->
+      <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+        <!--begin::Header-->
+        <!-- <app-header></app-header> -->
+        <!--end::Header-->
+        <!--begin::Toolbar-->
+        <div class="toolbar py-2 mb-1" id="kt_toolbar">
+          <!--begin::Container-->
+          <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
+            <!--begin::Page title-->
+            <div class="page-title d-flex flex-column me-3">
+              <!--begin::Title-->
+              <h1 class="d-flex text-gray my-1 fs-5">View Questionaira</h1>
+              <!--end::Title-->
+              <!--begin::Breadcrumb-->
+              <ul class="breadcrumb breadcrumb-dot fw-light text-gray-400 fs-8">
+                <!--begin::Item-->
+
+                <li class="breadcrumb-item text-gray-600" *ngIf="loginDetails?.roleId == '101'">
+                  <a routerLink="/cordinator/CoordinatorDashboard" routerLinkActive="active">Home</a>
+                </li>
+                <li class="breadcrumb-item text-gray-600" *ngIf="loginDetails?.roleId == '102'">
+                  <a routerLink="/mentor/MentorDashboard" routerLinkActive="active">Home</a>
+                </li>
+                <li class="breadcrumb-item text-gray-600" *ngIf="loginDetails?.roleId == '103'">
+                  <a routerLink="/mentee/menteeDashboard" routerLinkActive="active">Home</a>
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <!-- <li class="breadcrumb-item text-gray-500"
+                   *ngIf="loginDetails?.roleId !== '102' && loginDetails?.roleId !== '103' "><a href=""
+                     routerLink="/cordinator/program" routerLinkActive="active">Program</a>
+                 </li> -->
+                <li class="breadcrumb-item text-gray-500">
+                  <a href="" routerLink="/mentee/MenteeProgram" routerLinkActive="active">Program</a>
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <li *ngIf="loginDetails?.roleId == '101' " class="breadcrumb-item text-gray-600"><a
+                    routerLink="/cordinator/ProgramDetail/{{programId}}" routerLinkActive="active">Program Details</a>
+                </li>
+                <li *ngIf="loginDetails?.roleId == '102'" class="breadcrumb-item text-gray-600"><a
+                    routerLink="/mentor/program-details/{{programId}}" routerLinkActive="active">Program Details</a>
+                </li>
+                <li *ngIf="loginDetails?.roleId == '103' " class="breadcrumb-item text-gray-600"><a
+                    routerLink="ViewQuestionairaEmployeeList/{{programId}}" routerLinkActive="active">Program
+                    Details</a></li>
+                <li class="breadcrumb-item text-gray-500">
+                  <a routerLink="/cordinator/ViewQuestionairaEmployeeList/{{programId}}" routerLinkActive="active">View
+                    Response</a>
+                </li>
+                <li *ngIf="loginDetails?.roleId == '101' " class="breadcrumb-item text-gray-600"><a>View
+                    Questionaira</a>
+                </li>
+                <!--end::Item-->
+              </ul>
+              <!--end::Breadcrumb-->
+            </div>
+            <!--end::Page title-->
+            <div>
+              <a routerLink="/cordinator/ViewQuestionairaEmployeeList/{{programId}}" routerLinkActive="active"
+                class="btn btn-gray btn-sm fs-9"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="svg replaced-svg ">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Go Back</a>
+            </div>
+          </div>
+          <!--end::Container-->
+        </div>
+        <!--end::Toolbar-->
+        <!--begin::Container-->
+        <div class="d-flex flex-column flex-root">
+          <!--begin::Page-->
+          <div class="page d-flex flex-row flex-column-fluid">
+            <!--begin::Wrapper-->
+            <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+              <!--begin::Toolbar-->
+              <div class=" py-2" id="kt_toolbar">
+                <!--begin::Container-->
+                <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
+                  <!--begin::Page title-->
+                  <div class="page-title d-flex flex-column me-3">
+                    <!--begin::Title-->
+                    <p class="mb-1"><b>Program :</b> &nbsp; {{questionData[0]?.programName}}</p>
+                    <p class=""><b>Description :</b>&nbsp; {{questionData[0]?.long_desc}}</p>
+                    <!--end::Title-->
+                    <!--begin::Breadcrumb-->
+
+                    <!--end::Breadcrumb-->
+                  </div>
+
+                  <!-- <div class="row">
+                    <span>
+
+                      <p-dropdown [options]="employeList" placeholder="Filter By Employee"
+                        (onChange)="getServeyResponse()" [(ngModel)]="selectedeEmployee" optionLabel="label"
+                        optionValue="value">
+                      </p-dropdown>
+                    </span>
+                  </div> -->
+                  <!--end::Page title-->
+                </div>
+                <!--end::Container-->
+              </div>
+              <!--end::Toolbar-->
+              <!--begin::Container-->
+              <div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
+                <!--begin::Post-->
+
+                <div class="content flex-row-fluid survay-area" id="kt_content">
+
+
+                  <form class="form d-flex flex-column flex-lg-row justify-content-center">
+                    <!--begin::Main column-->
+                    <div class="d-flex flex-column  gap-7 gap-lg-10 w-900 w-lg-900px">
+                      <!--begin::General options-->
+
+                      <!------Start multi Question----->
+                      <div class="card card-flush py-4 mb-4">
+                        <!--begin::Card body-->
+                        <div class="card-body pt-0">
+                          <div class="question-bx">
+
+                            <div class="top-tittle-bx mt-2">
+                              <h2 class="text-center fs-5 fw-bold">Answer Responses</h2>
+                            </div>
+
+                            <!-- ======radio===== -->
+                            <div class="radio py-3 px-5">
+                              <!--begin::Repeater-->
+                              <div class="row">
+                                <ol>
+                                  <ng-container *ngFor="let question of questionData let i = index;">
+                                    <li class="mb-5">
+                                      <h6 class="fs-6 fw-bold mb-3 "> Q- {{question?.question}}</h6>
+                                      <p>
+                                        Ans -> <mark style="text-transform: capitalize;">{{question?.optionName}}</mark>
+                                      </p>
+                                    </li>
+
+                                  </ng-container>
+
+                                  <div *ngIf="questionData.length<1" class="message-box">
+                                    Responses not available!
+                                  </div>
+                                </ol>
+                              </div>
+                            </div>
+                            <!--end::Repeater-->
+                          </div>
+                        </div>
+                      </div>
+                      <!--end::Card body-->
+                    </div>
+                  </form>
+                </div>
+                <!--end::Post-->
+              </div>
+              <!--end::Container-->
+              <!--begin::Footer-->
+              <div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+                <!--begin::Container-->
+                <app-footer></app-footer>
+                <!--end::Container-->
+              </div>
+              <!--end::Footer-->
+            </div>
+            <!--end::Wrapper-->
+          </div>
+          <!--end::Page-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

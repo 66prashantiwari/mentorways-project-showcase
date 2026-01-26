@@ -1,0 +1,53 @@
+// .model-body .model-content{
+//     justify-content: flex-start;
+//     padding: 10px 20px;
+//     background: #eee;
+// }
+
+svg:hover {
+    cursor: pointer;
+  }
+  .image-row{
+    ul{
+      display: block;
+      li{
+        
+        margin-right: 5px;
+        margin-bottom: 5px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        max-width: 32%;
+        width: 262px;
+        padding: 4px;
+        display: inline-block;
+    
+      }
+    }
+  }
+  .dropzone.dropzone-queue {
+  
+    margin-right: 26px;
+}
+button.btn.btn-upload {
+  width: 76px;
+  height: 76px;
+  border-radius: 100%;
+  background: #eae7e7;
+}
+.my-drive-box{
+  display: inline-block;
+    align-items: center;
+    width: 84%;
+    margin-right: 10px;
+    font-size: 12px;
+    line-height: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.my-drive-box img{
+  width: 17%;
+    margin-right: 7px;
+    border-radius: 9px;
+}

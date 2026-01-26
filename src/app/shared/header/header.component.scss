@@ -1,0 +1,53 @@
+.profile-image{
+    position: relative;
+}
+.profile-image .menu-sub{
+    left: auto;
+}
+.profile-image:hover .menu-sub{
+display: block;
+}
+
+.wel{cursor: auto;
+    background: #f3463a1a;
+    padding: 5%;
+    text-align: center;
+    color: #111111;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 700;
+}
+
+.btn.btn-icon.btn-active-light-primary.w-30px.h-30px.w-md-40px.h-md-40px.profile-image:hover {
+    border: 4px solid #fff;
+    padding: 0;
+}
+
+.topspan{ color: white;
+    margin: auto 9px;
+    font-size: 17px;}
+
+.topb1{
+    font-size: 15px;
+    font-weight: 400;
+    margin-right: 5px;
+    vertical-align: text-bottom;
+}
+
+.topb2{
+    background: #ffffff3d;
+    padding: 4px 10px;
+    border: 1px solid #ffffff78;
+    font-size: 21px;
+    border-radius: 3px;
+}  
+
+.fw-bolder img{
+    width: 48%;
+}
+.dropdown-toggle::after {
+   
+    margin-left: 0.855em;
+    
+    margin-top: 12px;
+}
